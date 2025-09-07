@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/numberGame/numberGame.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <h1 class="title">
+        <span>U</span>
+        <span>P</span>
+        <span>&</span>
+        <span>D</span>
+        <span>O</span>
+        <span>W</span>
+        <span>N</span>
+      </h1>
+
+      <div class="box">
+        <div class="textWrap">
+          <div class="result">
+            <p id="resultArea" class="">결과는?</p>
+          </div>
+
+          <div class="chance">
+            <p id="chanceArea">남은기회 : 5</p>
+          </div>
+        </div>
+
+        <div class="buttonWrap">
+          <input
+            type="number"
+            id="userInput"
+            onfocus="clearInput()"
+            placeholder="1~100사이의 숫자를 입력해주세요"
+          />
+          <button id="playBtn" onclick="play()">GO!</button>
+        </div>
+
+        <div class="buttonWrap">
+          <button id="resetBtn" onclick="reset()"><p>다시하기</p></button>
+        </div>
+      </div>
+    </div>
+    <script src="/numberGame/index.js"></script>
+  </body>
+</html>
