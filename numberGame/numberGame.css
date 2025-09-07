@@ -1,0 +1,103 @@
+@import url("/src/css/common.css"); /* 변수 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"); /* 폰트 */
+
+@font-face {
+  font-family: "PartialSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+
+body {
+}
+.wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 1320px;
+  min-width: 320px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 auto;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 30px;
+  box-sizing: border-box;
+}
+h1 span {
+  position: relative;
+  top: 20px;
+  display: inline-block;
+  animation: bounce 0.5s ease infinite alternate;
+  font-family: "PartialSans", cursive;
+  font-weight: 600;
+  font-size: 4.8rem;
+  color: var(--main);
+  text-shadow: 0 1px 0 var(--sub), 0 2px 0 var(--sub), 0 2px 0 var(--sub),
+    0 3px 0 var(--sub), 0 3px 0 var(--sub), 0 5px 0 transparent,
+    0 5px 0 transparent, 0 5px 0 transparent, 0 7px 0 transparent,
+    0 10px 10px rgba(0, 0, 0, 0.4);
+}
+h1 span + span {
+  margin-left: 15px;
+}
+
+h1 span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+h1 span:nth-child(3) {
+  animation-delay: 0.2s;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+h1 span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+h1 span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+h1 span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+h1 span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+h1 span:nth-child(8) {
+  animation-delay: 0.7s;
+}
+h1 span:nth-child(9) {
+  animation-delay: 0.8s;
+}
+h1 span:nth-child(10) {
+  animation-delay: 0.9s;
+}
+h1 span:nth-child(11) {
+  animation-delay: 1s;
+}
+
+@keyframes bounce {
+  100% {
+    top: -10px;
+    text-shadow: 0 1px 0 var(--sub), 0 2px 0 var(--sub), 0 3px 0 var(--sub),
+      0 4px 0 var(--sub), 0 5px 0 var(--sub), 0 6px 0 var(--sub),
+      0 7px 0 var(--sub), 0 8px 0 var(--sub), 0 9px 0 var(--sub),
+      0 50px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+button {
+}
+
+button:disabled {
+  background: black;
+}
