@@ -244,103 +244,6 @@ input::placeholder {
   color: #999;
 }
 
-/* New */
-.wrapper {
-  width: 90%;
-  max-width: 1320px;
-  margin: 0 auto;
-  position: relative;
-  min-width: 320px;
-}
-
-.head {
-  background: var(--main);
-  color: var(--white);
-  font-weight: 700;
-  font-size: 3rem;
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-}
-
-.prList {
-  display: flex;
-  flex-direction: column;
-  max-width: 800px;
-  margin: 20px auto;
-  justify-content: center;
-  align-items: center;
-}
-
-.gotoBtn {
-  box-sizing: border-box;
-  padding: 40px 30px;
-  border-radius: 30px;
-  margin-bottom: 20px;
-  border: 1px solid var(--border);
-  display: inline-block;
-
-  width: 100%;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-.gotoBtn:last-of-type {
-  margin-bottom: 0 !important;
-}
-
-.gotoBtn > p {
-  font-size: 1.8rem;
-  color: var(--black);
-  position: relative;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-.gotoBtn > p::after {
-  width: 40px;
-  height: 40px;
-  right: -60px;
-  display: block;
-  content: "\e941";
-  font-family: var(--icon);
-  font-weight: 300;
-  font-size: 1.5rem;
-  aspect-ratio: 1/1;
-  line-height: 1;
-  position: absolute;
-  top: 50%;
-  transition: all 0.3s linear;
-  transform: translateY(-50%);
-
-  background: var(--main);
-  border-radius: 100%;
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.gotoBtn:hover {
-  background: var(--main);
-}
-.gotoBtn:hover > p {
-  color: var(--white);
-}
-
-.gotoBtn:hover > p::after {
-  transform: translateY(-50%) translateX(20px);
-  color: var(--main);
-  background: var(--white);
-}
-
-.game {
-}
-.todoList {
-}
-.newsTimes {
-}
-
 /*******************************************************************************
     @media  ~980px               
 *******************************************************************************/
@@ -349,18 +252,6 @@ input::placeholder {
   html,
   body {
     font-size: 14px;
-  }
-
-  .gotoBtn {
-    padding: 30px 20px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-  }
-
-  .gotoBtn > p::after {
-    width: 36px;
-    height: 36px;
-    right: -54px;
   }
 }
 
@@ -458,18 +349,5 @@ input::placeholder {
     -ms-text-size-adjust: none; /* IE */
     -moz-text-size-adjust: none; /* 파이어폭스 */
     -o-text-size-adjust: none; /* 오페라(구)*/
-  }
-
-  .gotoBtn {
-    padding: 20px 16px;
-    border-radius: 16px;
-    margin-bottom: 12px;
-  }
-
-  .gotoBtn > p::after {
-    width: 30px;
-    height: 30px;
-    right: -48px;
-    font-size: 1.3rem;
   }
 }
