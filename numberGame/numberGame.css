@@ -429,11 +429,21 @@ button {
   }
 
   .buttonWrap {
-    border: 1px solid var(--main);
+    border: none;
     margin-bottom: 20px;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .buttonWrap > input {
+    border: 1px solid var(--main);
+    margin-bottom: 8px;
+    width: 100% !important;
+    border-radius: 40px;
   }
 
   #playBtn {
+    width: 100%;
   }
 
   .re_btn {
