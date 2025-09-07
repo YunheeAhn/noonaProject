@@ -22,7 +22,7 @@
       <div class="box">
         <div class="textWrap">
           <div class="result">
-            <p id="resultArea" class="">결과는?</p>
+            <p id="resultArea" class="">숫자를 입력하세요</p>
           </div>
 
           <div class="chance">
@@ -37,11 +37,15 @@
             onfocus="clearInput()"
             placeholder="1~100사이의 숫자를 입력해주세요"
           />
-          <button id="playBtn" onclick="play()">GO!</button>
+          <button id="playBtn" onclick="play()" class="re_btn">
+            <p>GO!</p>
+          </button>
         </div>
 
         <div class="buttonWrap">
-          <button id="resetBtn" onclick="reset()"><p>다시하기</p></button>
+          <button id="resetBtn" onclick="reset()" class="re_btn">
+            <p>다시하기</p>
+          </button>
         </div>
       </div>
     </div>

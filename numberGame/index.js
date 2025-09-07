@@ -43,14 +43,14 @@ function play() {
     // 유저가 입력한 값의 유효성 검사
     // (1) 1~100사이의 숫자인가?
     if (userValue < 1 || userValue > 100) {
-        console.log("1~100사이의 숫자를 입력해주세요");
+        // console.log("1~100사이의 숫자를 입력해주세요");
         resultArea.textContent = "1~100사이의 숫자를 입력해주세요";
         return;
     }
     // (2) 중복숫자인가?
     if(historyArr.includes(userValue)){
-        console.log("이미 입력한 숫자 입니다");
-        resultArea.textContent = "이미 입력한 숫자 입니다";
+        // console.log("이미 입력한 숫자 입니다");
+        resultArea.textContent = "이미 입력한 숫자 입니다😅";
         return;
     }
 
@@ -64,21 +64,25 @@ function play() {
 
     // 2-3. 입력한 숫자와 랜덤숫자 매칭
     if(userValue < randomNum) {
-        console.log("UP");
-        resultArea.textContent = "UP";
-        resultArea.classList.add("up");
+        // console.log("UP");
+        resultArea.textContent = "UP⬆️";
         resultArea.classList.remove("down");
+        resultArea.classList.remove("win");
+        resultArea.classList.add("up");
 
     } else if(userValue > randomNum) {
-        console.log("DOWN");
-        resultArea.textContent = "DOWN";
-        resultArea.classList.add("down");
+        // console.log("DOWN");
+        resultArea.textContent = "DOWN⬇️";
         resultArea.classList.remove("up");
+        resultArea.classList.remove("win");
+        resultArea.classList.add("down");
 
     } else {
-        console.log("GOOD");
-        resultArea.textContent = "GOOD";
-        resultArea.classList.remove("win");
+        // console.log("GOOD");
+        resultArea.textContent = "✨GOOD✨";
+        resultArea.classList.remove("up");
+        resultArea.classList.remove("down");
+        resultArea.classList.add("win");
         playBtn.disabled = true;
 
     }
@@ -88,9 +92,23 @@ function play() {
     console.log(historyArr);
 
     // 2-5. 기회 소진시 게임오버하기
-    if(chances < 1) {
+    // if(chances < 1) {
+    //     gameOver = true;
+    //     resultArea.textContent = "😭다시 시도해보세요😭";
+    // }
+
+    // 남은 기회 수에 따라 색 변하기
+    if (chances === 3) {
+        chanceArea.classList.add("third");
+    } else if (chances === 1) {
+        chanceArea.classList.remove("third");
+        chanceArea.classList.add("fifth");
+    } else if (chances < 1) {
         gameOver = true;
+        resultArea.textContent = "😭다시 시도해보세요😭";
     }
+
+
     // 2-6. 게임오버하면 Go버튼 비활성화 하기
     if(gameOver == true) {
         playBtn.disabled = true;
@@ -100,15 +118,13 @@ function play() {
 
 
 
-
-
-
 // 3.리셋버튼
 function reset() {
     pickRandom();
     chances = 5;
     userInput.value = "";
-    resultArea.textContent = "";
+    resultArea.classList.remove("win");
+    resultArea.textContent = "숫자를 입력하세요";
     chanceArea.textContent = `남은 기회 : 5`;
     playBtn.disabled = false;
     historyArr = [];
