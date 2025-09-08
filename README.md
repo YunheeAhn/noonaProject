@@ -10,12 +10,14 @@
 
 ## 🔗 배포 주소
 
-| 과제명    | 주소                                   |
-| ---------- | ---------------------------------------------- |
-| **메인화면** | <https://projectnoona.netlify.app/>                |
-| **숫자맞추기게임** | <https://projectnoona.netlify.app/numbergame/>                |
-| **할일앱** | ⚙️준비중               |
-| **뉴스타임즈**  | ⚙️준비중              |
+
+| 과제명 | 주소 | 깃허브 |
+| --- | --- | --- |
+| **메인화면** | <https://projectnoona.netlify.app/> | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/blob/main/index.html) |
+| **숫자맞추기게임** | <https://projectnoona.netlify.app/numbergame/> | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/numberGame) |
+| **할일앱** | ⚙️준비중 | ⚙️준비중 |
+| **뉴스타임즈** | ⚙️준비중 | ⚙️준비중 |
+
 
 
 ## 📂 구성
@@ -31,7 +33,7 @@
 - 사용자 번호 입력 후 확인 버튼 클릭 > 랜덤번호와 사용자 입력 번호 비교 <br>
   맞다면? 'GOOD' <br> 유저 입력번호 보다 랜덤번호가 작다면? 'DOWN' <br> 유저 입력번호보다 랜덤번호가 크다면? 'UP'
 - 게임 종료시 확인 버튼 비활성화
-- 리셋버튼 클릭시 랜덤번호 값, 기회 초기화, 게임 초기화
+- 리셋버튼 클릭시 랜덤번호 값, 기회 초기화, 버튼 활성화, 게임 초기화
 - 기회 소진시 3번 이하 남았을 경우 남은 기회 텍스트 노란색으로 컬러 변경 / 1번 이하 남았을 경우 빨간색으로 컬러 변경
 
 
