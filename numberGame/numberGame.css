@@ -268,21 +268,30 @@ button {
 .re_btn:hover p {
   color: var(--main);
 }
+
+#correctArea {
+  font-size: 2rem;
+  letter-spacing: -0.54px;
+  margin: 25px 0 12px;
+  color: var(--black);
+}
+
 #chanceArea {
   font-size: 1.5rem;
   letter-spacing: -0.54px;
   color: var(--black);
-  margin: 25px 0 12px;
+  margin: 0 0 12px;
   font-weight: 400;
 }
 
 #chanceArea.third {
   color: orange;
+  font-weight: 500;
 }
 
 #chanceArea.fifth {
   color: red;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 /*******************************************************************************
@@ -333,12 +342,6 @@ button {
   }
   .re_btn:before {
     border-radius: 70px;
-  }
-
-  #chanceArea {
-    font-size: 1.5rem;
-    letter-spacing: -0.54px;
-    margin: 25px 0 12px;
   }
 }
 
@@ -411,7 +414,12 @@ button {
 
   #chanceArea {
     font-size: 1.2rem;
-    margin: 20px 0 12px;
+    margin: 0 0 8px;
+  }
+
+  #correctArea {
+    font-size: 1.5rem;
+    margin: 20px 0 8px;
   }
 }
 
@@ -482,7 +490,7 @@ button {
     border-radius: 40px;
   }
 
-  #chanceArea {
+  #correctArea {
     margin: 16px 0 8px;
   }
 }

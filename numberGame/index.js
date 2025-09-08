@@ -19,6 +19,7 @@ let resetBtn = document.getElementById('resetBtn');
 
 let resultArea =document.getElementById('resultArea');
 let chanceArea =document.getElementById('chanceArea');
+let correctArea =document.getElementById('correctArea');
 
 let historyArr = []
 let chances = 5;
@@ -99,13 +100,18 @@ function play() {
 
     // 남은 기회 수에 따라 색 변하기
     if (chances === 3) {
+        // 남은기회가 3회라면? third 클래스 붙이기
         chanceArea.classList.add("third");
+
     } else if (chances === 1) {
+        // 남은기회가 1회라면? third클래스 제거, fifth클래스 붙이기
         chanceArea.classList.remove("third");
         chanceArea.classList.add("fifth");
     } else if (chances < 1) {
+        // 남은 기회가 0회라면? 게임오버, 다시시도 유도, 정답 숫자 안내
         gameOver = true;
         resultArea.textContent = "😭다시 시도해보세요😭";
+        correctArea.textContent = `정답은 ${randomNum} 입니다`;
     }
 
 
