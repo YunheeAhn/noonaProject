@@ -293,6 +293,10 @@ button {
   }
   h1 span {
     font-size: 5.8rem;
+    text-shadow: 0 1px 0 var(--sub), 0 2px 0 var(--sub), 0 2px 0 var(--sub),
+      0 3px 0 var(--sub), 0 3px 0 var(--sub), 0 5px 0 transparent,
+      0 5px 0 transparent, 0 5px 0 transparent, 0 6px 0 transparent,
+      0 8px 8px rgba(0, 0, 0, 0.4);
   }
 
   .result {
@@ -350,6 +354,10 @@ button {
   }
   h1 span {
     font-size: 4.8rem;
+    text-shadow: 0 1px 0 var(--sub), 0 1px 0 var(--sub), 0 1px 0 var(--sub),
+      0 2px 0 var(--sub), 0 2px 0 var(--sub), 0 2px 0 transparent,
+      0 4px 0 transparent, 0 4px 0 transparent, 0 4px 0 transparent,
+      0 5px 5px rgba(0, 0, 0, 0.4);
   }
   h1 span + span {
     margin-left: 10px;
