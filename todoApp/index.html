@@ -22,25 +22,37 @@
         <h1>TO DO LIST</h1>
 
         <section class="input_area">
-          <input type="text" name="" id="taskInput" />
-          <button id="addBtn" onclick="addTask()">+</button>
+          <input
+            type="text"
+            name=""
+            onfocus="clearInput()"
+            id="taskInput"
+            placeholder="할 일을 입력하세요"
+          />
+          <button id="addBtn" onclick="addTask()">
+            <span class="material-icons"> add </span>
+          </button>
         </section>
 
         <section class="task_area">
           <div class="task_tab">
             <div class="tabs on">모두</div>
             <div class="tabs">진행중</div>
-            <div class="tabs">끝납</div>
-            <div class="material-icons">close</div>
+            <div class="tabs">끝남</div>
           </div>
 
           <div class="tasks">
             <div class="task_board" id="taskBoard">
               <div class="task">
-                <p>집가기<span class="date">완료일:25.09.10</span></p>
+                <p>집가기</p>
+                <!-- <p>집가기<span class="date">예정일 :25.09.10</span></p> -->
                 <div class="tButton_wrap">
-                  <button class="checkBtn" id="checkBtn"></button>
-                  <button class="deleteBtn" id="deleteBtn"></button>
+                  <button class="checkBtn" id="checkBtn">
+                    <span class="material-icons"> check </span>
+                  </button>
+                  <button class="deleteBtn" id="deleteBtn">
+                    <span class="material-icons"> close </span>
+                  </button>
                 </div>
               </div>
             </div>
