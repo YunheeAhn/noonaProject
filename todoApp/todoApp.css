@@ -1,21 +1,96 @@
 @import url("/src/css/common.css"); /* 변수 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"); /* 폰트 */
 
-* {
-  font-family: var(--kor);
-}
 .wrap {
   height: 100vh;
   width: 100%;
   max-width: 100%;
+  background-image: url("/todoApp/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-contnet: center;
+  align-items: center;
 }
 
 .inner {
   width: 900px;
-  height: 100%;
+  min-width: 320px;
+  height: 90%;
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
-  border: 1px solid var(--main);
+  background: var(--white);
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: -1px;
+  font-weight: 800;
+  color: var(--pink);
+  text-align: center;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  margin-bottom: 32px;
+}
+
+button {
+  display: block;
+  width: 44px;
+  height: 44px;
+  padding: 4px;
+  box-sizing: border-box;
+  background: none;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+button:hover {
+}
+button + button {
+  margin-left: 8px;
+}
+button > span {
+  font-size: 30px;
+  font-weight: 400;
+  transition: all 0.4s ease;
+}
+button:hover > span {
+  font-weight: 700;
+  transition: all 0.4s ease;
+}
+
+.input_area {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  margin-bottom: 20px;
+}
+.input_area > input {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: calc(100% - 52px);
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.input_area > input::placeholder {
+  font-size: 1rem;
+  color: var(--border2);
+}
+.input_area > button {
+  margin-left: 8px;
+}
+.input_area {
 }
 
 .task_area {
@@ -23,32 +98,84 @@
 .task_tab {
   display: flex;
   flex-direction: row;
+  margin-bottom: 16px;
 }
 .tabs {
   position: relative;
   padding: 10px 16px;
   box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-size: 1.125rem;
 }
-.tabs.on {
-  color: var(--main);
-  font-weight: 600;
-}
-.tabs.on::before {
-  position: absolute;
-  background: var(--main);
+.tabs::after {
+  bottom: 0;
+  left: 0;
+  width: 0px;
   display: block;
   content: "";
+  height: 3px;
+  position: absolute;
+  background: var(--pink);
+  transition: all 0.4s ease;
+}
+.tabs:hover {
+  color: var(--pink);
+  font-weight: 700;
+}
+.tabs:hover::after {
   width: 100%;
+  right: 100%;
+}
+.tabs.on {
+  color: var(--pink);
+  font-weight: 700;
+}
+.tabs::before {
+  position: absolute;
+  background: var(--pink);
+  display: block;
+  content: "";
   height: 3px;
   bottom: 0;
   left: 0;
-  right: 0;
-  transition: all 0.3s linear;
+}
+.tabs.on::before {
+  width: 100%;
+  right: 100%;
+}
+.tasks {
+  max-height: 49vh;
+  overflow-y: auto;
 }
 
 .task {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  background: var(--white);
+  box-shadow: 0px 6px 20px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.task + .task {
+  margin-top: 4px;
+}
+
+.task > p {
+  width: calc(100% - 96px);
+  font-size: 1.1rem;
+  color: var(--black);
+  font-weight: 600;
+}
+.task > p > span {
+  font-size: 14px;
+  display: block;
+  margin-top: -2px;
+  font-weight: 400;
+  color: var(--basic);
 }
 .tButton_wrap {
   display: flex;
@@ -56,32 +183,141 @@
   margin-left: 20px;
 }
 
-.tButton_wrap > button {
-  display: block;
-  width: 80px;
-  padding: 4px 10px;
+.checkBtn > span {
+  color: green;
 }
-.tButton_wrap > button + button {
-  margin-left: 8px;
+.deleteBtn > span {
+  color: red;
 }
 
-.checkBtn:before {
-  display: block;
-  /* content: `\e88a`; */
-  content: "\e88a";
-  font-family: var(--icon);
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  color: var(--black);
+/*******************************************************************************
+    @media ~1280px
+*******************************************************************************/
+@media all and (max-width: 1280px) {
 }
 
-.deleteBtn:before {
-  display: block;
-  content: `\e872`;
-  font-family: var(--icon);
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  color: var(--black);
+/*******************************************************************************
+    @media  ~980px               
+*******************************************************************************/
+@media all and (max-width: 980px) {
+  .inner {
+    width: 90%;
+  }
+  h1 {
+    font-size: 3rem;
+    letter-spacing: -0.8px;
+    padding: 20px 10px;
+    margin-bottom: 28px;
+  }
+
+  button {
+    width: 40px;
+    height: 40px;
+  }
+
+  button > span {
+    font-size: 26px;
+  }
+
+  .input_area {
+    margin-bottom: 16px;
+  }
+
+  .input_area > input {
+    width: calc(100% - 48px);
+    font-size: 1.1rem;
+    padding: 8px 12px;
+  }
+
+  .input_area > button {
+    margin-left: 8px;
+  }
+  .task_tab {
+    margin-bottom: 16px;
+  }
+  .tabs {
+    padding: 10px 16px;
+    font-size: 1.12rem;
+  }
+  .tabs::after {
+    height: 3px;
+  }
+  .tabs.on::before {
+    height: 3px;
+  }
+
+  .task {
+    padding: 10px 12px;
+    box-shadow: 0px 6px 20px 3px rgba(0, 0, 0, 0.06);
+  }
+  .task > p {
+    width: calc(100% - 88px);
+    font-size: 1.1rem;
+  }
+  .task > p > span {
+    font-size: 14px;
+    margin-top: -2px;
+  }
+  .tButton_wrap {
+    margin-left: 20px;
+  }
+}
+
+/*******************************************************************************
+    @media  ~980px               
+*******************************************************************************/
+@media all and (max-width: 680px) {
+  h1 {
+    font-size: 2.6rem;
+    letter-spacing: -0.6px;
+    padding: 15px 8px;
+    margin-bottom: 22px;
+  }
+
+  button {
+    width: 30px;
+    height: 30px;
+  }
+
+  button > span {
+    font-size: 20px;
+  }
+
+  .input_area {
+    margin-bottom: 12px;
+  }
+
+  .input_area > input {
+    width: calc(100% - 36px);
+    font-size: 1rem;
+    padding: 5px 8px;
+  }
+
+  .input_area > button {
+    margin-left: 6px;
+  }
+  .task_tab {
+    margin-bottom: 12px;
+  }
+  .tabs {
+    padding: 8px 12px;
+    font-size: 1.1rem;
+  }
+  .tabs::after {
+    height: 2px;
+  }
+  .tabs.on::before {
+    height: 2px;
+  }
+
+  .task > p {
+    width: calc(100% - 66px);
+    font-size: 1.05rem;
+  }
+  .task > p > span {
+    font-size: 13px;
+  }
+  .tButton_wrap {
+    margin-left: 12px;
+  }
 }
