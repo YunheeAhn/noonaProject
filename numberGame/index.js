@@ -66,6 +66,8 @@ function play() {
     // 기회 차감
     chances--;
     chanceArea.textContent = `남은 기회 : ${chances}`;
+    // UI 업데이트
+    updateChanceUI(chances);
 
     // 정답 여부 판별
     if (userValue < randomNum) {
@@ -86,10 +88,7 @@ function play() {
 
     // 입력값 기록
     historyArr.push(userValue);
-
-    // UI 업데이트
-    updateChanceUI(chances);
-
+    
     // 기회 소진 시
     if (chances < 1) {
         gameOver = true;
