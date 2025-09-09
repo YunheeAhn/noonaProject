@@ -113,13 +113,13 @@ function play() {
         resultArea.textContent = "😭다시 시도해보세요😭";
         correctArea.textContent = `정답은 ${randomNum} 입니다`;
     }
-
-
+    
+    
     // 2-6. 게임오버하면 Go버튼 비활성화 하기
     if(gameOver == true) {
         playBtn.disabled = true;
     }
-
+    
 };
 
 
@@ -130,9 +130,14 @@ function reset() {
     chances = 5;
     userInput.value = "";
     resultArea.classList.remove("win");
+    chanceArea.classList.remove("third");
+    chanceArea.classList.remove("fifth");
     resultArea.textContent = "숫자를 입력하세요";
     chanceArea.textContent = `남은 기회 : 5`;
+    correctArea.textContent = "";
+
     playBtn.disabled = false;
+    gameOver = false;
     historyArr = [];
 
 };
