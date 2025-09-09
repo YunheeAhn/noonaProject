@@ -5,143 +5,121 @@
 // 그게 아니라면
 // 랜덤번호 < 유저번호 -> Down 이라고 알려주기
 // 랜덤번호 > 유저번호 -> Up 이라고 알려주기
-// 만약 유저가 reset버튼을 누르면? 랜던번호 값, 기회 초기화, 게임초기화
+// 만약 유저가 reset버튼을 누르면? 랜덤번호 값, 기회 초기화, 게임초기화
 // 기회는 총 5번
 // 기회 소진시 -> 게임오버, go버튼 비활성화
 // 유저가 1~100 범위 밖의 숫자 입력시 -> 알려주고, 기회 소진 안함
 // 유저가 이미 입력한 숫자 입력시 -> 알려주고, 기회 소진 안함
-
 
 let randomNum = 0;
 let userInput = document.getElementById('userInput');
 let playBtn = document.getElementById('playBtn');
 let resetBtn = document.getElementById('resetBtn');
 
-let resultArea =document.getElementById('resultArea');
-let chanceArea =document.getElementById('chanceArea');
-let correctArea =document.getElementById('correctArea');
+let resultArea = document.getElementById('resultArea');
+let chanceArea = document.getElementById('chanceArea');
+let correctArea = document.getElementById('correctArea');
 
-let historyArr = []
+let historyArr = [];
 let chances = 5;
 let gameOver = false;
 
-// 1. 랜덤 숫자 가져오기 Math.random
-function pickRandom(){
-    randomNum = Math.floor(Math.random()*100)+1;
-    console.log("랜덤 번호 : ", randomNum)
-};
+// 1. 랜덤 숫자 가져오기
+function pickRandom() {
+    randomNum = Math.floor(Math.random() * 100) + 1;
+    console.log("랜덤 번호 : ", randomNum);
+}
 
-
-// ** 인풋창 포커스시 입력 값 초기화
+// 2. 인풋창 포커스시 입력 값 초기화
 function clearInput() {
     userInput.value = "";
 }
 
-// 2. 플레이버튼 활성화
+// 3. 남은 기회 UI 업데이트
+function updateChanceUI(chances) {
+    // 기존 클래스 초기화
+    chanceArea.classList.remove("third", "fifth");
+
+    if (chances === 3) {
+        chanceArea.classList.add("third");
+    } else if (chances === 1) {
+        chanceArea.classList.add("fifth");
+    }
+}
+
+// 4. 플레이 버튼 동작
 function play() {
-    // 2-1. 유저가 입력한 숫자 가져오기
     let userValue = userInput.value;
-    // 유저가 입력한 값의 유효성 검사
-    // (1) 1~100사이의 숫자인가?
+
+    // 유효성 검사 (1) 범위 체크
     if (userValue < 1 || userValue > 100) {
-        // console.log("1~100사이의 숫자를 입력해주세요");
-        resultArea.textContent = "1~100사이의 숫자를 입력해주세요";
-        return;
-    }
-    // (2) 중복숫자인가?
-    if(historyArr.includes(userValue)){
-        // console.log("이미 입력한 숫자 입니다");
-        resultArea.textContent = "이미 입력한 숫자 입니다😅";
+        resultArea.textContent = "1~100 사이의 숫자를 입력해주세요";
         return;
     }
 
+    // 유효성 검사 (2) 중복 체크
+    if (historyArr.includes(userValue)) {
+        resultArea.textContent = "이미 입력한 숫자입니다 😅";
+        return;
+    }
 
-    // 2-2. 기회 제한하기
-    // 기회 변수는 global로 선언
-    chances --;
-    console.log("남은기회", chances);
+    // 기회 차감
+    chances--;
     chanceArea.textContent = `남은 기회 : ${chances}`;
 
-
-    // 2-3. 입력한 숫자와 랜덤숫자 매칭
-    if(userValue < randomNum) {
-        // console.log("UP");
+    // 정답 여부 판별
+    if (userValue < randomNum) {
         resultArea.textContent = "UP⬆️";
-        resultArea.classList.remove("down");
-        resultArea.classList.remove("win");
+        resultArea.classList.remove("down", "win");
         resultArea.classList.add("up");
-
-    } else if(userValue > randomNum) {
-        // console.log("DOWN");
+    } else if (userValue > randomNum) {
         resultArea.textContent = "DOWN⬇️";
-        resultArea.classList.remove("up");
-        resultArea.classList.remove("win");
+        resultArea.classList.remove("up", "win");
         resultArea.classList.add("down");
-
     } else {
-        // console.log("GOOD");
         resultArea.textContent = "✨GOOD✨";
-        resultArea.classList.remove("up");
-        resultArea.classList.remove("down");
+        resultArea.classList.remove("up", "down");
         resultArea.classList.add("win");
         playBtn.disabled = true;
-
+        return; // ✅ 정답이면 함수 종료 (게임오버 로직 실행 안됨)
     }
 
-    // 2-4. 가져온 유저가 입력한 값을 저장하기
+    // 입력값 기록
     historyArr.push(userValue);
-    console.log(historyArr);
 
-    // 2-5. 기회 소진시 게임오버하기
-    // if(chances < 1) {
-    //     gameOver = true;
-    //     resultArea.textContent = "😭다시 시도해보세요😭";
-    // }
+    // UI 업데이트
+    updateChanceUI(chances);
 
-    // 남은 기회 수에 따라 색 변하기
-    if (chances === 3) {
-        // 남은기회가 3회라면? third 클래스 붙이기
-        chanceArea.classList.add("third");
-
-    } else if (chances === 1) {
-        // 남은기회가 1회라면? third클래스 제거, fifth클래스 붙이기
-        chanceArea.classList.remove("third");
-        chanceArea.classList.add("fifth");
-    } else if (chances < 1) {
-        // 남은 기회가 0회라면? 게임오버, 다시시도 유도, 정답 숫자 안내
+    // 기회 소진 시
+    if (chances < 1) {
         gameOver = true;
         resultArea.textContent = "😭다시 시도해보세요😭";
         correctArea.textContent = `정답은 ${randomNum} 입니다`;
     }
-    
-    
-    // 2-6. 게임오버하면 Go버튼 비활성화 하기
-    if(gameOver == true) {
+
+    // 게임오버라면 Go 버튼 비활성화
+    if (gameOver === true) {
         playBtn.disabled = true;
     }
-    
-};
+}
 
-
-
-// 3.리셋버튼
+// 5. 리셋 버튼
 function reset() {
     pickRandom();
     chances = 5;
+    historyArr = [];
+    gameOver = false; // ✅ 게임 상태 초기화
+
     userInput.value = "";
-    resultArea.classList.remove("win");
-    chanceArea.classList.remove("third");
-    chanceArea.classList.remove("fifth");
     resultArea.textContent = "숫자를 입력하세요";
-    chanceArea.textContent = `남은 기회 : 5`;
     correctArea.textContent = "";
+    chanceArea.textContent = `남은 기회 : 5`;
+
+    resultArea.classList.remove("win", "up", "down");
+    chanceArea.classList.remove("third", "fifth");
 
     playBtn.disabled = false;
-    gameOver = false;
-    historyArr = [];
+}
 
-};
-
-
+// 게임 시작 시 랜덤 숫자 뽑기
 pickRandom();
-
