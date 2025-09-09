@@ -1,2 +1,87 @@
 @import url("/src/css/common.css"); /* 변수 */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"); /* 폰트 */
+
+* {
+  font-family: var(--kor);
+}
+.wrap {
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+}
+
+.inner {
+  width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid var(--main);
+}
+
+.task_area {
+}
+.task_tab {
+  display: flex;
+  flex-direction: row;
+}
+.tabs {
+  position: relative;
+  padding: 10px 16px;
+  box-sizing: border-box;
+}
+.tabs.on {
+  color: var(--main);
+  font-weight: 600;
+}
+.tabs.on::before {
+  position: absolute;
+  background: var(--main);
+  display: block;
+  content: "";
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s linear;
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+}
+.tButton_wrap {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+
+.tButton_wrap > button {
+  display: block;
+  width: 80px;
+  padding: 4px 10px;
+}
+.tButton_wrap > button + button {
+  margin-left: 8px;
+}
+
+.checkBtn:before {
+  display: block;
+  /* content: `\e88a`; */
+  content: "\e88a";
+  font-family: var(--icon);
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  color: var(--black);
+}
+
+.deleteBtn:before {
+  display: block;
+  content: `\e872`;
+  font-family: var(--icon);
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  color: var(--black);
+}
