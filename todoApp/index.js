@@ -26,6 +26,7 @@ function addTask() {
 
 }
 
+// 인풋창 포커스시 입력 초기화
 function clearInput() {
     taskInput.value = "";
 }
