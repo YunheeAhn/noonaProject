@@ -40,7 +40,7 @@ function updateChanceUI(chances) {
     // 기존 클래스 초기화
     chanceArea.classList.remove("third", "fifth");
 
-    if (chances === 3) {
+    if (chances <= 3) {
         chanceArea.classList.add("third");
     } else if (chances === 1) {
         chanceArea.classList.add("fifth");
