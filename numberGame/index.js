@@ -40,9 +40,9 @@ function updateChanceUI(chances) {
     // 기존 클래스 초기화
     chanceArea.classList.remove("third", "fifth");
 
-    if (chances <= 3) {
+    if (chances <= 3 && chances > 1) {
         chanceArea.classList.add("third");
-    } else if (chances === 1) {
+    } else if (chances <= 1 ) {
         chanceArea.classList.add("fifth");
     }
 }
@@ -81,7 +81,7 @@ function play() {
         resultArea.classList.remove("up", "down");
         resultArea.classList.add("win");
         playBtn.disabled = true;
-        return; // ✅ 정답이면 함수 종료 (게임오버 로직 실행 안됨)
+        return; // 정답이면 함수 종료 (게임오버 로직 실행 안됨)
     }
 
     // 입력값 기록
@@ -108,11 +108,11 @@ function reset() {
     pickRandom();
     chances = 5;
     historyArr = [];
-    gameOver = false; // ✅ 게임 상태 초기화
+    gameOver = false; // 게임 상태 초기화
 
     userInput.value = "";
     resultArea.textContent = "숫자를 입력하세요";
-    correctArea.textContent = "";
+    correctArea.textContent = ""; // 정답 숫자 안내 초기화
     chanceArea.textContent = `남은 기회 : 5`;
 
     resultArea.classList.remove("win", "up", "down");
