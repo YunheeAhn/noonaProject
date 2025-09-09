@@ -190,6 +190,32 @@ button:hover > span {
   color: red;
 }
 
+/* 할일 완료시 */
+.task.finish {
+  background: var(--border);
+  border: none;
+  position: relative;
+}
+.task.finish > p {
+}
+.task.finish::before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 90%;
+  height: 1px;
+  background: var(--basic);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.task.finish .tButton_wrap .checkBtn > span {
+  color: var(--basic);
+}
+.task.finish .tButton_wrap .deleteBtn > span {
+  color: var(--basic);
+}
+
 /*******************************************************************************
     @media ~1280px
 *******************************************************************************/
