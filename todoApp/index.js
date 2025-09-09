@@ -8,6 +8,9 @@
 
 let taskInput = document.getElementById("taskInput");
 let addBtn = document.getElementById("addBtn");
+let checkBtn = document.getElementById("checkBtn");
+let deleteBtn = document.getElementById("deleteBtn");
+
 let taskList = [];
 
 // 할일 추가하기
@@ -33,23 +36,35 @@ function clearInput() {
 
 // 추가한 할일 화면에 그리기
 function render(){
-    let resultHtml = "";
-    for(let i = 0; i < taskList.length; i++ ){
-        resultHtml += `<div class="task">
-                <p>${taskList[i]}</p>
-                <div class="tButton_wrap">
-                  <button class="checkBtn" id="checkBtn">
-                    <span class="material-icons"> check </span>
-                  </button>
-                  <button class="deleteBtn" id="deleteBtn">
-                    <span class="material-icons"> close </span>
-                  </button>
-                </div>
-              </div>`;
-    }
-
-    document.getElementById("taskBoard").innerHTML = resultHtml;
+  let resultHtml = "";
+  for(let i = 0; i < taskList.length; i++ ){
+    resultHtml += `<div class="task">
+        <p>${taskList[i]}</p>
+        <div class="tButton_wrap">
+          <button class="checkBtn">
+            <span class="material-icons"> check </span>
+          </button>
+          <button class="deleteBtn">
+            <span class="material-icons"> close </span>
+          </button>
+        </div>
+      </div>`;
+  }
+  document.getElementById("taskBoard").innerHTML = resultHtml;
 }
+
+// 입력 후 체크 버튼, 삭제버튼
+// document.getElementById("taskBoard").addEventListener("click", function(e) {
+//   if (e.target.closest(".checkBtn")) {
+//     let task = e.target.closest(".task");
+//     task.classList.toggle("finish");
+//   }
+
+//   if (e.target.closest(".deleteBtn")) {
+//     let task = e.target.closest(".task");
+//     task.remove(); 
+//   }
+// });
 
 render();
 
