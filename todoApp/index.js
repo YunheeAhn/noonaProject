@@ -13,27 +13,43 @@ let taskList = [];
 // 할일 추가하기
 function addTask() {
     let taskContent = taskInput.value
+    
+    // taskInput에 아무것도 안써있으면
+    if(taskContent === ""){
+        //할일 입력 해달라는 얼럿창 발생
+        alert('할일을 입력해주세요')
+        return;
+    } 
+    // 그게아니면 렌더
     taskList.push(taskContent)
+    render(); // 추가하기 버튼 누르면 화면에 그리기 실행
 
-    //render(); // 추가하기 버튼 누르면 화면에 그리기 실행
+}
+
+function clearInput() {
+    taskInput.value = "";
 }
 
 // 추가한 할일 화면에 그리기
-// function render(){
-//     let resultHtml = "";
-//     for(let i = 0; i < taskList.length; i++ ){
-//         resultHtml += `<div class="task">
-//                 <p>${taskList[i]}</p>
-//                 <div class="tButton_wrap">
-//                   <button>check</button>
-//                   <button>delete</button>
-//                 </div>
-//               </div>`;
-//     }
+function render(){
+    let resultHtml = "";
+    for(let i = 0; i < taskList.length; i++ ){
+        resultHtml += `<div class="task">
+                <p>${taskList[i]}</p>
+                <div class="tButton_wrap">
+                  <button class="checkBtn" id="checkBtn">
+                    <span class="material-icons"> check </span>
+                  </button>
+                  <button class="deleteBtn" id="deleteBtn">
+                    <span class="material-icons"> close </span>
+                  </button>
+                </div>
+              </div>`;
+    }
 
-//     document.getElementById("taskBoard").innerHTML = resultHtml;
-// }
+    document.getElementById("taskBoard").innerHTML = resultHtml;
+}
 
-// render();
+render();
 
 
