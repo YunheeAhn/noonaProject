@@ -99,6 +99,7 @@ button:hover > span {
   display: flex;
   flex-direction: row;
   margin-bottom: 16px;
+  position: relative;
 }
 .tabs {
   position: relative;
@@ -109,40 +110,43 @@ button:hover > span {
   font-size: 1.125rem;
 }
 .tabs::after {
+  content: "";
+  position: absolute;
   bottom: 0;
   left: 0;
-  width: 0px;
-  display: block;
-  content: "";
+  width: 100%;
   height: 3px;
-  position: absolute;
   background: var(--pink);
-  transition: all 0.4s ease;
+  transform: scaleX(0); /* 기본은 안 보임 */
+  transform-origin: left;
+  transition: transform 0.3s ease; /* 부드럽게 애니메이션 */
 }
 .tabs:hover {
   color: var(--pink);
   font-weight: 700;
 }
 .tabs:hover::after {
-  width: 100%;
-  right: 100%;
+  transform: scaleX(1);
 }
 .tabs.on {
   color: var(--pink);
   font-weight: 700;
 }
 .tabs::before {
-  position: absolute;
-  background: var(--pink);
-  display: block;
   content: "";
-  height: 3px;
+  position: absolute;
   bottom: 0;
   left: 0;
-}
-.tabs.on::before {
   width: 100%;
-  right: 100%;
+  height: 3px;
+  background: var(--pink);
+  transform: scaleX(0); /* 기본은 안 보임 */
+  transform-origin: left;
+  transition: transform 0.3s ease; /* 부드럽게 애니메이션 */
+}
+
+.tabs.on::before {
+  transform: scaleX(1); /* 선택된 탭만 확대 */
 }
 .tasks {
   max-height: 49vh;
