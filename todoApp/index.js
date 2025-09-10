@@ -58,10 +58,9 @@ function addTask() {
 
     // 그게아니면 렌더
     taskList.push(task) ;
-    render(); // 추가하기 버튼 누르면 화면에 그리기 실행
-    
     // 입력창 자동으로 비우기
     taskInput.value = "";
+    render(); // 추가하기 버튼 누르면 화면에 그리기 실행
 
     console.log(taskList);
 }
@@ -87,14 +86,15 @@ function render(){
   if(mode === "all" ){
     // 전체 taskList 보여주기
     list = taskList;
-
   } else if(mode === "ongoing"){
     // filterList 보여주기
-    list = filterList;
-  } else if(mode === "done"){
-    
-    list = filterList;
-  }
+    // 진행중일 때 상황 변화
+    list = taskList.filter(task => !task.isComplete);
+  } else if(mode === "done") {
+    // 완료일 때 상황 변화
+    list = taskList.filter(task => task.isComplete);
+
+  };
 
   let resultHtml = "";
   
@@ -126,10 +126,6 @@ function render(){
         </div>
       </div>`;
     };
-
-
-
-    
   };
   document.getElementById("taskBoard").innerHTML = resultHtml;
 }
@@ -145,10 +141,8 @@ function toggleComplete(id) {
       break;
     } 
   };
-  
-  
+
   render(); //이벤트가 실행이 되면 함수 불러주기
-  console.log(taskList);
 }
 
 // 삭제 버튼 클릭 이벤트
@@ -162,12 +156,13 @@ function  deleteTask(id) {
       break;
     };
   };
+  
   render(); //이벤트가 실행이 되면 함수 불러주기
 }
 
 // filter(event) 함수
 function filter(event) {
-  console.log("filter",event.target.id);
+  // console.log("filter",event.target.id);
   // div.tabs의 id="" 값 가져오기
   // let mode = event.target.id -> 상단의 render() 함수에서 알 수 있도록 전역 변수로 변경
   mode = event.target.id;
