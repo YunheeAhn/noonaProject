@@ -63,7 +63,7 @@ function render(){
           <button class="checkBtn" onclick="toggleComplete('${taskList[i].id}')">
             <span class="material-icons"> replay </span>
           </button>
-          <button class="deleteBtn" >
+          <button class="deleteBtn" onclick="deleteTask('${taskList[i].id}')">
             <span class="material-icons"> close </span>
           </button>
         </div>
@@ -76,7 +76,7 @@ function render(){
           <button class="checkBtn" onclick="toggleComplete('${taskList[i].id}')">
             <span class="material-icons"> check </span>
           </button>
-          <button class="deleteBtn" >
+          <button class="deleteBtn" onclick="deleteTask('${taskList[i].id}')">
             <span class="material-icons"> close </span>
           </button>
         </div>
@@ -105,6 +105,20 @@ function toggleComplete(id) {
   
   render(); //이벤트가 실행이 되면 함수 불러주기
   console.log(taskList)
+}
+
+// 삭제 버튼 클릭 이벤트
+function  deleteTask(id) {
+  // 어떤 task의 삭제버튼 클릭했는지 찾기
+  // .splice()
+
+  for(let i = 0; i < taskList.length; i++) {
+    if(taskList[i].id == id){
+      taskList.splice(i,1)
+      break;
+    }
+  }
+  render(); //이벤트가 실행이 되면 함수 불러주기
 }
 
 // 유니크 랜덤 id 만들기 함수
