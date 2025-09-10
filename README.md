@@ -15,7 +15,7 @@
 | ------------------ | ---------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | **메인화면**       | [메인바로가기](https://projectnoona.netlify.app/)                | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/blob/main/index.html) |
 | **숫자맞추기게임** | [숫자게임바로가기](https://projectnoona.netlify.app/numbergame/) | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/numberGame) |
-| **할일앱**         | ⚙️준비중                                                         | ⚙️준비중                                                                         |
+| **할일앱**         | [할일앱바로가기](https://projectnoona.netlify.app/todoapp/)      | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/todoApp)    |
 | **뉴스타임즈**     | ⚙️준비중                                                         | ⚙️준비중                                                                         |
 
 ## 📂 구성
@@ -37,3 +37,9 @@
 - 기회 소진시 3번 이하 남았을 경우 남은 기회 텍스트 노란색으로 컬러 변경 / 1번 이하 남았을 경우 빨간색으로 컬러 변경 및 정답 숫자 안내
 
 ### 🎯 할일 앱
+
+- 할 일 등록 및 삭제<br>
+- 할 일 상태별 필터링(모두,진행중,완료)<br>
+- 체크 버튼 누르면 완료 탭으로 이동되며, UI 변경<br>
+- 삭제 버튼 누르면 삭제<br>
+- 모두, 진행중, 완료 탭 변경시 UI 변경<br>
