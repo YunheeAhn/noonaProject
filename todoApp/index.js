@@ -16,13 +16,19 @@ let checkBtn = document.getElementById("checkBtn");
 let deleteBtn = document.getElementById("deleteBtn");
 
 let tabs = document.querySelectorAll(".tabs");
+let mode = 'all'; // 초기 세팅 값은 모두 보여주기
+let filterList = [];
 
 // 탭 이벤트
 for(let i = 0; i < tabs.length; i++) {
-  tabs[i].addEventListener("click",function(event){
+  tabs[i].addEventListener("click", function(event){
+    for(let j = 0; j < tabs.length; j++){
+      tabs[j].classList.remove("on");// 언더바 이동 
+    }
+    event.target.classList.add("on");// 언더바 이동 
     filter(event); // tabs에 filter(event) 부여하기
   });
-};
+}
 
 
 let taskList = [];
@@ -63,31 +69,47 @@ function clearInput() {
 
 // 추가한 할일 화면에 그리기
 function render(){
+  // 선택한 탭에 따른 리스트 변경
+  // 1. 내가 선택한 탭에 대한 정보 가져오기 (mode 값 가져오기)
+  // 2. 리스트를 다르게 보여준다
+  let list = [];
+  if(mode === "all" ){
+    // 전체 taskList 보여주기
+    list = taskList;
+
+  } else if(mode === "ongoing"){
+    // filterList 보여주기
+    list = filterList;
+  } else if(mode === "done"){
+    
+    list = filterList;
+  }
+
   let resultHtml = "";
   
-  for(let i = 0; i < taskList.length; i++ ){
-    if(taskList[i].isComplete == true) {
+  for(let i = 0; i < list.length; i++ ){
+    if(list[i].isComplete == true) {
       // isComplete이 true 이면 .finish 붙이기
     resultHtml += `<div class="task finish">
-        <p>${taskList[i].taskContent}</p> 
+        <p>${list[i].taskContent}</p> 
         <div class="tButton_wrap">
-          <button class="checkBtn" onclick="toggleComplete('${taskList[i].id}')">
+          <button class="checkBtn" onclick="toggleComplete('${list[i].id}')">
             <span class="material-icons"> replay </span>
           </button>
-          <button class="deleteBtn" onclick="deleteTask('${taskList[i].id}')">
+          <button class="deleteBtn" onclick="deleteTask('${list[i].id}')">
             <span class="material-icons"> close </span>
           </button>
         </div>
       </div>`;
     }else {
-    // task 객체의 taskContent만 프린트 ->taskList의 i번째의 taskContent
+    // task 객체의 taskContent만 프린트 ->list i번째의 taskContent
     resultHtml += `<div class="task">
-        <p>${taskList[i].taskContent}</p> 
+        <p>${list[i].taskContent}</p> 
         <div class="tButton_wrap">
-          <button class="checkBtn" onclick="toggleComplete('${taskList[i].id}')">
+          <button class="checkBtn" onclick="toggleComplete('${list[i].id}')">
             <span class="material-icons"> check </span>
           </button>
-          <button class="deleteBtn" onclick="deleteTask('${taskList[i].id}')">
+          <button class="deleteBtn" onclick="deleteTask('${list[i].id}')">
             <span class="material-icons"> close </span>
           </button>
         </div>
@@ -136,9 +158,10 @@ function  deleteTask(id) {
 function filter(event) {
   console.log("filter",event.target.id);
   // div.tabs의 id="" 값 가져오기
-  let mode = event.target.id
+  // let mode = event.target.id -> 상단의 render() 함수에서 알 수 있도록 전역 변수로 변경
+  mode = event.target.id;
   // 필터링된 리스트
-  let filterList = [];
+  filterList = [];
 
   if(mode === "all"){
     // 모두
@@ -152,6 +175,7 @@ function filter(event) {
         filterList.push(taskList[i]);
       }
     }
+    render();
     console.log("진행중",filterList)
 
   } else if(mode === "done") {
@@ -162,6 +186,7 @@ function filter(event) {
         filterList.push(taskList[i]);
       }
     }
+    render();
     console.log("완료됨",filterList)
   }
 }
