@@ -15,8 +15,17 @@ let addBtn = document.getElementById("addBtn");
 let checkBtn = document.getElementById("checkBtn");
 let deleteBtn = document.getElementById("deleteBtn");
 
-let taskList = [];
+let tabs = document.querySelectorAll(".tabs");
 
+// 탭 이벤트
+for(let i = 0; i < tabs.length; i++) {
+  tabs[i].addEventListener("click",function(event){
+    filter(event); // tabs에 filter(event) 부여하기
+  });
+};
+
+
+let taskList = [];
 // 할일 추가하기
 function addTask() {
     // 완료 버튼 이벤트를 위한 객체 생성
@@ -29,22 +38,22 @@ function addTask() {
       taskContent : taskInput.value,
       // 할 일의 완료 여부
       isComplete : false,
-    }
+    };
     
     // taskInput에 아무것도 안써있으면
     if(task.taskContent === ""){
       //할일 입력 해달라는 얼럿창 발생
       alert('할일을 입력해주세요')
       return;
-    } 
+    } ;
 
     // 그게아니면 렌더
-    taskList.push(task) 
+    taskList.push(task) ;
     render(); // 추가하기 버튼 누르면 화면에 그리기 실행
     
     taskInput.value = "";
-    
-    console.log(taskList)
+
+    console.log(taskList);
 }
 
 // 인풋창 포커스시 입력 초기화
@@ -83,12 +92,12 @@ function render(){
           </button>
         </div>
       </div>`;
-    }
+    };
 
 
 
     
-  }
+  };
   document.getElementById("taskBoard").innerHTML = resultHtml;
 }
 
@@ -102,11 +111,11 @@ function toggleComplete(id) {
       taskList[i].isComplete = !taskList[i].isComplete;
       break;
     } 
-  }
+  };
   
   
   render(); //이벤트가 실행이 되면 함수 불러주기
-  console.log(taskList)
+  console.log(taskList);
 }
 
 // 삭제 버튼 클릭 이벤트
@@ -118,9 +127,43 @@ function  deleteTask(id) {
     if(taskList[i].id == id){
       taskList.splice(i,1)
       break;
-    }
-  }
+    };
+  };
   render(); //이벤트가 실행이 되면 함수 불러주기
+}
+
+// filter(event) 함수
+function filter(event) {
+  console.log("filter",event.target.id);
+  // div.tabs의 id="" 값 가져오기
+  let mode = event.target.id
+  // 필터링된 리스트
+  let filterList = [];
+
+  if(mode === "all"){
+    // 모두
+    // 전체 task 아이템을 보여준다
+    render();
+  } else if(mode === "ongoing") {
+    // 진행중
+    // task.isComplete = false 아이템
+    for(let i = 0; i < taskList.length; i++ ){
+      if(taskList[i].isComplete === false) {
+        filterList.push(taskList[i]);
+      }
+    }
+    console.log("진행중",filterList)
+
+  } else if(mode === "done") {
+    // 끝남
+    // task.isComplete = true 아이템
+    for(let i = 0; i < taskList.length; i++ ){
+      if(taskList[i].isComplete === true) {
+        filterList.push(taskList[i]);
+      }
+    }
+    console.log("완료됨",filterList)
+  }
 }
 
 // 유니크 랜덤 id 만들기 함수
