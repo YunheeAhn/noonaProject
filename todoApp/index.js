@@ -22,11 +22,14 @@ let filterList = [];
 // 탭 이벤트
 for(let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function(event){
-    for(let j = 0; j < tabs.length; j++){
-      tabs[j].classList.remove("on");// 언더바 이동 
-    }
-    event.target.classList.add("on");// 언더바 이동 
-    filter(event); // tabs에 filter(event) 부여하기
+
+    // 모든 탭에서 on 제거
+    tabs.forEach(tab => tab.classList.remove("on"));
+    // 클릭한 탭에 on 추가
+    event.currentTarget.classList.add("on");
+
+    // 여기서 탭별 필터링 함수 호출
+    filter(event);
   });
 }
 
