@@ -60,10 +60,18 @@ function addTask() {
     taskList.push(task) ;
     render(); // 추가하기 버튼 누르면 화면에 그리기 실행
     
+    // 입력창 자동으로 비우기
     taskInput.value = "";
 
     console.log(taskList);
 }
+
+// 할일 추가 할 때 엔터키로 입력하기
+taskInput.addEventListener("keypress", function(event){
+  if(event.key === "Enter"){
+    addTask();
+  }
+});
 
 // 인풋창 포커스시 입력 초기화
 function clearInput() {
