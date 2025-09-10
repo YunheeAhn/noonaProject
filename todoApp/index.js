@@ -42,6 +42,8 @@ function addTask() {
     taskList.push(task) 
     render(); // 추가하기 버튼 누르면 화면에 그리기 실행
     
+    taskInput.value = "";
+    
     console.log(taskList)
 }
 
