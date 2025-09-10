@@ -167,6 +167,7 @@ button:hover > span {
 .task > p {
   width: calc(100% - 96px);
   font-size: 1.1rem;
+  letter-spacing: -0.54px;
   color: var(--black);
   font-weight: 600;
   line-height: 44px;
