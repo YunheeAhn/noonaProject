@@ -169,6 +169,8 @@ button:hover > span {
   font-size: 1.1rem;
   color: var(--black);
   font-weight: 600;
+  line-height: 44px;
+  word-break: break-all;
 }
 .task > p > span {
   font-size: 14px;
@@ -195,20 +197,13 @@ button:hover > span {
   background: var(--border);
   border: none;
   position: relative;
+  opacity: 0.6;
 }
 .task.finish > p {
+  position: relative;
+  text-decoration: line-through;
 }
-.task.finish::before {
-  position: absolute;
-  display: block;
-  content: "";
-  width: 90%;
-  height: 1px;
-  background: var(--basic);
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
+
 .task.finish .tButton_wrap .checkBtn > span {
   color: var(--basic);
 }
@@ -279,6 +274,7 @@ button:hover > span {
   .task > p {
     width: calc(100% - 88px);
     font-size: 1.1rem;
+    line-height: 40px;
   }
   .task > p > span {
     font-size: 14px;
@@ -339,6 +335,7 @@ button:hover > span {
   .task > p {
     width: calc(100% - 66px);
     font-size: 1.05rem;
+    line-height: 30px;
   }
   .task > p > span {
     font-size: 13px;
