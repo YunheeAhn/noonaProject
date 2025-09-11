@@ -16,6 +16,7 @@
 | **메인화면**       | [메인바로가기](https://projectnoona.netlify.app/)                | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/blob/main/index.html) |
 | **숫자맞추기게임** | [숫자게임바로가기](https://projectnoona.netlify.app/numbergame/) | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/numberGame) |
 | **할일앱**         | [할일앱바로가기](https://projectnoona.netlify.app/todoapp/)      | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/todoApp)    |
+| **할일앱v2**       | [할일앱바로가기](https://projectnoona.netlify.app/todoapp_v2/)   | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/todoApp_v2) |
 | **뉴스타임즈**     | ⚙️준비중                                                         | ⚙️준비중                                                                         |
 
 ## 📂 구성
@@ -43,3 +44,12 @@
 - 체크 버튼 누르면 완료 탭으로 이동되며, UI 변경<br>
 - 삭제 버튼 누르면 삭제<br>
 - 모두, 진행중, 완료 탭 변경시 UI 변경<br>
+
+### 🎯 할일 앱\_v2
+
+- 기존 할일 앱 기능 포함<br>
+- 할일 등록 시 마감일 추가 등록<br>
+- 할일, 마감일 수정 하여 변경 가능(진행중, 완료 상태에서도 변경 가능)<br>
+- 수정 내용 바로 반영
+- 마감일 기준 내림차순 정리<br>
+- 마감일에 따른 색상 UI 변화 <br>당일 혹은 지난 할일 : red <br>7일 이내 : orange <br>그 외 : green <br>
