@@ -236,7 +236,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   width: 100%;
 }
 .task > .text_Wrap > input[type="date"] {
-  width: 100%;
+  width: calc(100% - 16px);
 }
 .task > .text_Wrap h2 {
   font-size: 1.3rem;
