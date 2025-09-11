@@ -13,6 +13,7 @@
 
 .container {
   max-width: 900px;
+  min-width: 320px;
   width: 90%;
   height: 90vh;
   margin: 0 auto;
@@ -167,7 +168,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   box-sizing: border-box;
   cursor: pointer;
   transition: all 0.4s ease;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 .tabs::after {
   content: "";
@@ -211,7 +212,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
 /* 할일 생성영역 */
 .task_board {
-  max-height: 57vh;
+  max-height: 52vh;
   overflow-y: auto;
 }
 .task {
@@ -232,7 +233,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   width: calc(100% - 76px);
 }
 .task > .text_Wrap h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   letter-spacing: -0.64px;
   line-height: 120%;
   word-break: break-all;
@@ -288,4 +289,191 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 }
 .task.finish .deleteBtn > span {
   color: #444;
+}
+
+/*******************************************************************************
+    @media ~1280px
+*******************************************************************************/
+@media all and (max-width: 1280px) {
+}
+
+/*******************************************************************************
+    @media ~980px
+*******************************************************************************/
+@media all and (max-width: 980px) {
+  /* 버튼 */
+  button {
+    width: 32px;
+    height: 32px;
+  }
+  button > span {
+    font-size: 22px !important;
+  }
+
+  /* 입력창 */
+  input {
+    height: 32px;
+    line-height: 32px;
+    width: calc(100% - 50px);
+    padding: 4px 10px;
+  }
+  /* 상단 */
+  .title {
+    font-size: 3rem;
+    margin-bottom: 26px;
+  }
+
+  /* 최초 화면 설명 */
+  .features {
+    padding: 16px;
+  }
+
+  /* 인풋영역 */
+  .input_area {
+    margin-bottom: 16px;
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input_area > button {
+    width: 100%;
+    border-color: var(--border2);
+    margin-top: 6px;
+  }
+
+  .input_wrap {
+    width: 100%;
+    gap: 10px;
+  }
+  .input_wrap > p {
+    font-size: 1.2rem;
+    line-height: 32px;
+    margin-right: 10px;
+    width: 50px;
+  }
+  /* 탭 영역 */
+  .task_tab {
+    margin-bottom: 16px;
+  }
+  .tabs {
+    padding: 10px 16px;
+    font-size: 1.15rem;
+  }
+
+  /* 할일 생성영역 */
+  .task_board {
+    max-height: 50vh;
+  }
+  .task {
+    gap: 18px;
+    padding: 12px 12px 12px 25px;
+    border-radius: 15px;
+  }
+  .task + .task {
+    margin-top: 10px;
+  }
+  .task > .text_Wrap {
+    width: calc(100% - 72px);
+  }
+  .task > .text_Wrap h2 {
+    font-size: 1.25rem;
+  }
+  .task > .text_Wrap .date {
+    font-size: 14px;
+  }
+  .tButton_wrap {
+    gpa: 6px;
+  }
+
+  /* 남은 기간에 따른 태스크 색상변화 */
+  .task::before {
+    width: 3px;
+  }
+}
+
+/*******************************************************************************
+    @media ~680px
+*******************************************************************************/
+@media all and (max-width: 680px) {
+  /* 버튼 */
+  button {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+  }
+  button > span {
+    font-size: 20px !important;
+  }
+
+  /* 입력창 */
+  input {
+    height: 28px;
+    line-height: 28px;
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+  /* 상단 */
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  /* 최초 화면 설명 */
+  .features {
+    padding: 12px;
+  }
+
+  /* 인풋영역 */
+  .input_area {
+    margin-bottom: 12px;
+  }
+
+  .input_area > button {
+    margin-top: 4px;
+  }
+
+  .input_wrap {
+  }
+  .input_wrap > p {
+    font-size: 1.2rem;
+    line-height: 28px;
+    width: 46px;
+  }
+  /* 탭 영역 */
+  .tabs {
+    padding: 8px 12px;
+    font-size: 1.1rem;
+  }
+  .tabs::after {
+    height: 2px;
+  }
+  .tabs::before {
+    height: 2px;
+  }
+
+  /* 할일 생성영역 */
+  .task_board {
+    max-height: 58vh;
+  }
+  .task {
+    gap: 12px;
+    padding: 8px 8px 8px 18px;
+    border-radius: 12px;
+  }
+  .task > .text_Wrap {
+    width: calc(100% - 68px);
+  }
+  .task > .text_Wrap h2 {
+    font-size: 1.2rem;
+  }
+  .task > .text_Wrap .date {
+    font-size: 13px;
+  }
+
+  /* 남은 기간에 따른 태스크 색상변화 */
+  .task::before {
+    width: 2px;
+  }
 }
