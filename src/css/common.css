@@ -243,7 +243,13 @@ input:-ms-input-placeholder {
 input::placeholder {
   color: #999;
 }
-
+.wrap {
+  position: relative;
+}
+.wrap > .goHome {
+  bottom: 30px;
+  right: 30px;
+}
 .goHome {
   width: 60px;
   height: 60px;
