@@ -216,26 +216,28 @@ function toggleEdit(id, btn) {
   if (btn.querySelector("span").textContent === "edit") {
     editingId = id;
 
-    // 제목 input
+    // input 생성 및 값 지정
     let titleInput = document.createElement("input");
     titleInput.type = "text";
     titleInput.value = task.taskContent;
-    titleInput.classList.add("edit-title");
+    titleInput.classList.add("edit_title");
 
     // 날짜 input
     let dateInput = document.createElement("input");
     dateInput.type = "date";
     dateInput.value = task.dateContent;
-    dateInput.classList.add("edit-date");
+    dateInput.classList.add("edit_date");
 
+    // 인풋으로 변경하기
     taskDiv.querySelector(".text_Wrap").replaceChild(titleInput, titleEl);
     taskDiv.querySelector(".text_Wrap").replaceChild(dateInput, dateEl);
 
     btn.querySelector("span").textContent = "check";
   } else {
-    let titleInput = taskDiv.querySelector(".edit-title");
-    let dateInput = taskDiv.querySelector(".edit-date");
+    let titleInput = taskDiv.querySelector(".edit_title");
+    let dateInput = taskDiv.querySelector(".edit_date");
 
+    // 수정 하는 인풋에 내용이 없으면 alert창 생성
     if (!titleInput.value.trim()) {
       alert("할 일을 입력해주세요!");
       return;
@@ -245,6 +247,7 @@ function toggleEdit(id, btn) {
     task.taskContent = titleInput.value;
     task.dateContent = dateInput.value;
 
+    // 마감일 변경 했을 시, 변경된 마감일 기준으로 내림차순 정렬
     taskList.sort((a, b) => new Date(a.dateContent) - new Date(b.dateContent));
 
     editingId = null;
