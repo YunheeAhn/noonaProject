@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0"
+    />
+    <!-- 구글아이콘 -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <link rel="stylesheet" href="/todoApp_v2/todoApp_v2.css" />
+    <title>할일앱v2</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="container">
+        <section class="header">
+          <h1 class="title">TO DO LIST</h1>
+
+          <!-- input Area -->
+          <div class="input_area">
+            <div class="input_wrap">
+              <p>할 일</p>
+              <input
+                type="text"
+                name=""
+                onfocus="clearInput()"
+                id="taskInput"
+                class="taskInput"
+                placeholder="할 일을 입력하세요"
+              />
+            </div>
+            <div class="input_wrap">
+              <p>마감일</p>
+              <input type="date" class="dateInput" name="" id="dateInput" />
+            </div>
+            <button class="addBtn" id="addBtn" onclick="addTask()">
+              <span class="material-icons"> add </span>
+            </button>
+          </div>
+        </section>
+
+        <section class="task_area">
+          <div class="task_tab">
+            <div class="tabs on" id="all">전체</div>
+            <div class="tabs" id="ongoing">진행중</div>
+            <div class="tabs" id="done">완료</div>
+          </div>
+
+          <div class="tasks">
+            <div class="task_board" id="taskBoard">
+              <!-- 반복될 내용 -->
+              <ul class="features">
+                <p class="featTit">기존 할일 앱 기능 + 추가 기능 목록</p>
+                <li>*아래의 설명은 할일을 추가하시면 지워집니다.</li>
+                <li>마감일이 당일 혹은 지난경우 red컬러로 표시 됩니다.</li>
+                <li>마감일이 7일 이내로 남은 경우 orange컬러로 표시 됩니다.</li>
+                <li>마감일이 7일 넘게 남은 경우 green컬러로 표시 됩니다.</li>
+                <li>
+                  할일 입력 후 수정 버튼을 누르면 할일과 날짜 수정이 가능합니다.
+                </li>
+                <li>
+                  수정 시 날짜를 변경 하게 되면 위의 로직에 맞게 변하며,
+                  내림차순으로 자동 정렬 됩니다.
+                </li>
+                <li></li>
+              </ul>
+              <!-- <div class="task finish sooner spare">
+                <button class="checkBtn" id="checkBtn">
+                  <span class="material-icons"> check </span>
+                </button>
+                <div class="text_Wrap">
+                  <h2 class="tTit">곧 마감</h2>
+                  <span class="date">2025/09/11</span>
+                </div>
+
+                <div class="tButton_wrap">
+                  <button class="editBtn" id="editBtn">
+                    <span class="material-icons"> edit </span>
+                  </button>
+                  <button class="deleteBtn" id="deleteBtn">
+                    <span class="material-icons"> delete </span>
+                  </button>
+                </div>
+              </div> -->
+              <!-- 반복될 내용 끝 -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="/todoApp_v2/index.js"></script>
+  </body>
+</html>

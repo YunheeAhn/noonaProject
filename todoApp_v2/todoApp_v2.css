@@ -1,0 +1,291 @@
+@import url("/src/css/common.css"); /* 변수 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"); /* 폰트 */
+
+.wrap {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: url("/todoApp/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 900px;
+  width: 90%;
+  height: 90vh;
+  margin: 0 auto;
+  background: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 버튼 */
+button {
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+button > span {
+  width: 100%;
+  height: 100%;
+  font-size: 26px !important;
+  display: flex !important
+;
+  font-weight: 400 !important;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  transition: all 0.3s linear;
+  border-color: var(--border2);
+}
+button:hover > span {
+  transition: all 0.3s linear;
+  transform: scale(1.2);
+}
+
+.addBtn > span {
+  color: var(--pink);
+}
+.checkBtn > span {
+  color: green;
+}
+.editBtn > span {
+  color: var(--main);
+}
+.deleteBtn > span {
+  color: red;
+}
+
+/* 입력창 */
+input {
+  height: 36px;
+  line-height: 36px;
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  width: calc(100% - 80px);
+  padding: 4px 10px;
+  box-sizing: border-box;
+}
+input::placeholder {
+  font-size: 1rem;
+  color: var(--border2);
+}
+input[type="date"] {
+  color: var(--basic);
+  font-size: 1rem;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  transition: all 0.3s linear;
+  color: var(--pink);
+}
+/* 상단 */
+.header {
+}
+.title {
+  color: var(--pink);
+  font-weight: 900;
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* 최초 화면 설명 */
+.features {
+  display: block;
+  padding: 20px;
+}
+.features .featTit {
+  font-size: 1.05rem;
+  color: var(--basic);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.features li {
+  font-size: 13px;
+  color: #666;
+  padding-left: 10px;
+}
+.features li + li {
+  margin-top: 2px;
+}
+
+/* 인풋영역 */
+.input_area {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.input_wrap {
+  display: flex;
+  align-items: center;
+  width: calc((100% - 66px) / 2);
+  gap: 10px;
+}
+.input_wrap > p {
+  font-size: 1.2rem;
+  letter-spacing: -0.54px;
+  line-height: 36px;
+  font-weight: 600;
+  margin-right: 10px;
+  width: 50px;
+}
+/* 탭 영역 */
+.task_tab {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 18px;
+  position: relative;
+}
+.tabs {
+  position: relative;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-size: 1.125rem;
+}
+.tabs::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--pink);
+  transform: scaleX(0); /* 기본은 안 보임 */
+  transform-origin: left;
+  transition: transform 0.3s ease; /* 부드럽게 애니메이션 */
+}
+.tabs:hover {
+  color: var(--pink);
+  font-weight: 700;
+}
+.tabs:hover::after {
+  transform: scaleX(1);
+}
+.tabs.on {
+  color: var(--pink);
+  font-weight: 700;
+}
+.tabs::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--pink);
+  transform: scaleX(0); /* 기본은 안 보임 */
+  transform-origin: left;
+  transition: transform 0.3s ease; /* 부드럽게 애니메이션 */
+}
+
+.tabs.on::before {
+  transform: scaleX(1); /* 선택된 탭만 확대 */
+}
+
+/* 할일 생성영역 */
+.task_board {
+  max-height: 57vh;
+  overflow-y: auto;
+}
+.task {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  padding: 12px 12px 12px 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.task + .task {
+  margin-top: 12px;
+}
+.task > .text_Wrap {
+  width: calc(100% - 76px);
+}
+.task > .text_Wrap h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.64px;
+  line-height: 120%;
+  word-break: break-all;
+}
+.task > .text_Wrap .date {
+  font-size: 14px;
+  letter-spacing: 0;
+  font-family: var(--eng);
+  color: #666;
+}
+.tButton_wrap {
+  display: flex;
+  gpa: 6px;
+}
+
+/* 남은 기간에 따른 태스크 색상변화 */
+.task::before {
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  display: block;
+  content: "";
+  top: 0;
+  left: 0;
+  background: green;
+}
+.task.sooner::before {
+  background: var(--pink);
+}
+.task.spare::before {
+  background: orange;
+}
+
+/* 할일 완료시 */
+.task.finish {
+  background: var(--border2);
+}
+.task.finish::before {
+  background: #444;
+}
+.task.finish h2 {
+  text-decoration: line-through;
+}
+.task.finish .date {
+  text-decoration: line-through;
+}
+
+.task.finish .checkBtn > span {
+  color: #444;
+}
+.task.finish .editBtn > span {
+  color: #444;
+}
+.task.finish .deleteBtn > span {
+  color: #444;
+}
