@@ -454,9 +454,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   }
 
   /* 할일 생성영역 */
-  .task_board {
-    max-height: 58vh;
-  }
+
   .task {
     gap: 12px;
     padding: 8px 8px 8px 18px;
