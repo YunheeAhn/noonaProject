@@ -326,6 +326,11 @@ input::placeholder {
     width: 30px;
     height: 30px;
   }
+
+  .wrap > .goHome {
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 /*******************************************************************************
@@ -431,5 +436,10 @@ input::placeholder {
   .homeBtn::after {
     width: 24px;
     height: 24px;
+  }
+
+  .wrap > .goHome {
+    bottom: 15px;
+    right: 15px;
   }
 }
