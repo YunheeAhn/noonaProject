@@ -140,13 +140,15 @@ function render() {
     let resultHtml = "";
 
     for (let i = 0; i < list.length; i++) {
+        // 삼항연산자로 변경
         let taskClass = list[i].isComplete ? "finish" : "";
         let dateClass = getDateClass(list[i].dateContent);
+        let icon = list[i].isComplete ? "replay" : "check";
 
         resultHtml += `
         <div class="task ${taskClass} ${dateClass}">
             <button class="checkBtn" onclick="toggleComplete('${list[i].id}')">
-            <span class="material-icons">check</span>
+            <span class="material-icons">${icon}</span>
             </button>
             <div class="text_Wrap">
             <h2 class="tTit">${list[i].taskContent}</h2>
