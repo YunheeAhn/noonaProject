@@ -1,0 +1,14 @@
+@import url("/newsTimes/common.css"); /* 변수 */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+.box {
+  width: 100%;
+  padding: 20px 30px;
+  border-bottom: 1px solid var(--basic);
+}
+.box:first-of-type {
+  border-top: 1px solid var(--basic);
+}
