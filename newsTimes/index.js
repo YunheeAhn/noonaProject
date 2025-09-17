@@ -42,7 +42,7 @@ const render = () => {
   const newsHTML = newsList
     .map((news) => {
       return `<div class="box">
-        <a>
+        <a target="_blank" href="${news.url}">
             <div class="img_cont">
                 <img src="${news.urlToImage || defaultImage}" alt="${news.title}"
      onerror="this.onerror=null; this.src='${defaultImage}';"/>
@@ -64,7 +64,7 @@ const render = () => {
                     <p class="date">${moment(news.publishedAt).fromNow()}</p>
                 </div>
             </div>
-            </a>
+        </a>
         </div>`;
     })
     .join("");
