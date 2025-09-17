@@ -72,6 +72,7 @@
   background: var(--grayBg);
   padding-left: 40px;
 }
+
 .img_cont {
   width: 460px;
   overflow: hidden;
@@ -88,7 +89,6 @@
   padding-left: 30px;
   box-sizing: border-box;
 }
-
 .cate {
   text-transform: uppercase;
   font-size: 16px;
@@ -103,6 +103,10 @@
   margin-bottom: 40px;
   color: var(--black);
   font-weight: 700;
+  transition: all 0.3s ease;
+}
+.box:hover .title {
+  color: var(--main);
 }
 .cont {
   font-size: 1rem;
