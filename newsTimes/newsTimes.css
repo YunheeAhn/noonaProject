@@ -56,19 +56,27 @@
 .input_wrap.show {
   transform: scaleX(1);
 }
+.input_wrap > input::placeholder {
+  font-size: 15px;
+}
+.input_wrap > input::focus {
+  border-color: var(--basic);
+}
 .input_wrap > input,
 .input_wrap > button {
   height: 30px;
   box-sizing: border-box;
   border: 1px solid var(--border);
   border-radius: 10px;
-  font-size: 1rem;
+  font-size: 15px;
   padding: 4px;
 }
 .input_wrap > button {
   width: 50px;
   box-sizing: border-box;
   height: 30px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 /* 로고 */
