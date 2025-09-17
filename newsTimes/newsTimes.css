@@ -260,6 +260,7 @@
     padding: 20px 0 0 0;
     transform: translateX(-100%);
     transition: all 0.3s ease;
+    z-index: 9;
   }
   .mobile_menu .inner.show {
     transform: translateX(0);
