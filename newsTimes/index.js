@@ -8,16 +8,21 @@ let newsList = [];
 const defaultImage =
   "https://img.freepik.com/premium-vector/green-start-button_875240-2897.jpg?w=1480";
 
+// 메뉴 가져오기
+// 메뉴에 클릭이벤트
+const menus = document.querySelectorAll(".menus li a");
+menus.forEach((menu) => menu.addEventListener("click", (event) => getNewsCatagory(event)));
+
 // 뉴스 정보 가져오기
 const getLatestNews = async () => {
   // URL 인스턴스를 활용해서 api 주소를 만들기
   // news api는 배포사이트에선 안보임, 로컬에서만 가능
-  //   const url = new URL(`https://newsapi.org/v2/top-headlines?country=us&q&apiKey=${API_KEY}`);
+  const url = new URL(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
 
   // 누나 api 주소 만들기
-  const url = new URL(
-    `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=us&apiKey=${API_KEY}`
-  );
+  //   const url = new URL(
+  //     `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=us&apiKey=${API_KEY}`
+  //   );
   // url 호출하기
   const response = await fetch(url);
   // json형식으로 data로 가져오기
@@ -64,6 +69,29 @@ const render = () => {
     .join("");
 
   document.getElementById("news-board").innerHTML = newsHTML;
+};
+
+// 카테고리별 뉴스 가져오기
+const getNewsCatagory = async (event) => {
+  //  카테고리 읽어오기
+  const category = event.target.textContent.toLowerCase();
+  console.log("카테고리", category);
+
+  // news api(로컬)
+  const url = new URL(
+    `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`
+  );
+  // 누나 api(배포)
+  //   const url = new URL(
+  //     `https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`
+  //   );
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  // 그 뉴스 보여주기
+  newsList = data.articles;
+  render();
 };
 
 getLatestNews();
