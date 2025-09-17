@@ -54,7 +54,6 @@
   overflow: hidden;
 }
 .input_wrap.show {
-  max-width: 260px;
   transform: scaleX(1);
 }
 .input_wrap > input::placeholder {
@@ -350,9 +349,9 @@
     width: 320px;
     margin: 16px auto;
   }
-
-  /* pc menu */
-
+  .input_wrap > input {
+    width: 160px;
+  }
   .box {
     padding: 16px 0;
   }
