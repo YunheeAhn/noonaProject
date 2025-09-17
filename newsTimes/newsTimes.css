@@ -52,7 +52,7 @@
   transform-origin: left;
   transition: transform 0.6s ease;
   overflow: hidden;
-  max-width: 300px;
+  max-width: 260px;
 }
 .input_wrap.show {
   transform: scaleX(1);
