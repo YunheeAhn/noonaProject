@@ -1,9 +1,9 @@
 // API KEY 변수 저장
 const API_KEY = "96079dbac224485cb7775442e96e2c56";
 // News api (로컬확인용)
-const newsAPI = "https://newsapi.org/v2/top-headlines?country=us";
+// const newsAPI = "https://newsapi.org/v2/top-headlines?country=us";
 // Noona api (배포용)
-const noonaAPI = "https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr";
+const newsAPI = "https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr";
 
 // 뉴스 전역변수로 선언
 let newsList = [];
@@ -20,11 +20,11 @@ menus.forEach((menu) => menu.addEventListener("click", (event) => getNewsCatagor
 // 뉴스 정보 가져오기
 const getLatestNews = async () => {
   // URL 인스턴스를 활용해서 api 주소를 만들기
-  // news api는 배포사이트에선 안보임, 로컬에서만 가능
-  //   const url = new URL(`${newsAPI}&apiKey=${API_KEY}`);
 
-  // 누나 api 주소 만들기
-  const url = new URL(`${noonaAPI}&apiKey=${API_KEY}`);
+  // news api는 배포사이트에선 안보임, 로컬에서만 가능
+  // 상단 변수 분리로 선택 용이하게 수정
+  const url = new URL(`${newsAPI}&apiKey=${API_KEY}`);
+
   // url 호출하기
   const response = await fetch(url);
   // json형식으로 data로 가져오기
@@ -78,12 +78,9 @@ const getNewsCatagory = async (event) => {
   //  카테고리 읽어오기
   const category = event.target.textContent.toLowerCase();
 
-  // news api(로컬)
-  //   const url = new URL(
-  //     `${newsAPI}&category=${category}&apiKey=${API_KEY}`
-  //   );
-  // 누나 api(배포)
-  const url = new URL(`${noonaAPI}&category=${category}&apiKey=${API_KEY}`);
+  // news api는 배포사이트에선 안보임, 로컬에서만 가능
+  // 상단 변수 분리로 선택 용이하게 수정
+  const url = new URL(`${newsAPI}&category=${category}&apiKey=${API_KEY}`);
 
   const response = await fetch(url);
   const data = await response.json();
@@ -110,12 +107,10 @@ const getNewsByKeyword = async () => {
   const keyword = searchInput.value;
 
   // api 호출하기
-  // news api(로컬)
-  //   const url = new URL(
-  //     `${newsAPI}&q=${keyword}&apiKey=${API_KEY}`
-  //   );
-  // 누나 api(배포)
-  const url = new URL(`${noonaAPI}&q=${keyword}&apiKey=${API_KEY}`);
+
+  // news api는 배포사이트에선 안보임, 로컬에서만 가능
+  // 상단 변수 분리로 선택 용이하게 수정
+  const url = new URL(`${newsAPI}&q=${keyword}&apiKey=${API_KEY}`);
 
   const response = await fetch(url);
   const data = await response.json();
