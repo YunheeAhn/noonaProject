@@ -45,8 +45,8 @@ const render = () => {
       return `<div class="box">
         <a href="" target="_blank">
             <div class="img_cont">
-                <img src="${news.urlToImage}"
-              onerror="this.onerror=null; this.src='${defaultImage}';"/>
+                <img src="${news.urlToImage || defaultImage}" alt="${news.title}"
+     onerror="this.onerror=null; this.src='${defaultImage}';"/>
             </div>
             <div class="txt_cont">
                 <span class="cate">${news.category ? news.category : ""}</span>
@@ -56,7 +56,7 @@ const render = () => {
                     news.description == null || news.description == ""
                       ? "내용없음"
                       : news.description.length > 200
-                      ? news.description.substr(0, 200) + "..."
+                      ? news.description.slice(0, 200) + "..."
                       : news.description
                   }
                 </p>
@@ -93,9 +93,21 @@ const getNewsCatagory = async (event) => {
   render();
 };
 
+const searchInput = document.getElementById("searchInput");
+// 인풋창 포커스시 입력 초기화
+function clearInput() {
+  searchInput.value = "";
+}
+// 인풋창 엔터 입력
+searchInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    getNewsByKeyword();
+  }
+});
+
 const getNewsByKeyword = async () => {
   // search 인풋 값 가져오기
-  const keyword = document.getElementById("searchInput").value;
+  const keyword = searchInput.value;
 
   // api 호출하기
   // news api(로컬)
@@ -112,5 +124,29 @@ const getNewsByKeyword = async () => {
   newsList = data.articles;
   render();
 };
+
+// 모바일 메뉴
+const menuBtn = document.querySelector(".mobile_menu > .btn"); // 열기 버튼
+const menuInner = document.querySelector(".mobile_menu > .inner"); // 메뉴 영역
+const closeBtn = document.querySelector(".mobile_menu .close_btn"); // 닫기 버튼
+
+// 모바일메뉴 열기
+menuBtn.addEventListener("click", () => {
+  menuInner.classList.add("show");
+});
+
+// 모바일메뉴 닫기
+closeBtn.addEventListener("click", () => {
+  menuInner.classList.remove("show");
+});
+
+// 검색 버튼 활성화
+const searchIcon = document.querySelector(".search_wrap > .search_icon");
+const inputWrap = document.querySelector(".search_wrap > .input_wrap");
+
+// 아이콘 클릭 시 input_wrap 토글
+searchIcon.addEventListener("click", () => {
+  inputWrap.classList.toggle("show");
+});
 
 getLatestNews();
