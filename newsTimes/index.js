@@ -3,7 +3,7 @@ const API_KEY = "96079dbac224485cb7775442e96e2c56";
 // News api (로컬확인용)
 const newsAPI = "https://newsapi.org/v2/top-headlines?country=us";
 // Noona api (배포용)
-const noonaAPI = "https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=us";
+const noonaAPI = "https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr";
 
 // 뉴스 전역변수로 선언
 let newsList = [];
@@ -77,7 +77,6 @@ const render = () => {
 const getNewsCatagory = async (event) => {
   //  카테고리 읽어오기
   const category = event.target.textContent.toLowerCase();
-  console.log("카테고리", category);
 
   // news api(로컬)
   //   const url = new URL(
@@ -85,6 +84,26 @@ const getNewsCatagory = async (event) => {
   //   );
   // 누나 api(배포)
   const url = new URL(`${noonaAPI}&category=${category}&apiKey=${API_KEY}`);
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  // 그 뉴스 보여주기
+  newsList = data.articles;
+  render();
+};
+
+const getNewsByKeyword = async () => {
+  // search 인풋 값 가져오기
+  const keyword = document.getElementById("searchInput").value;
+
+  // api 호출하기
+  // news api(로컬)
+  //   const url = new URL(
+  //     `${newsAPI}&q=${keyword}&apiKey=${API_KEY}`
+  //   );
+  // 누나 api(배포)
+  const url = new URL(`${noonaAPI}&q=${keyword}&apiKey=${API_KEY}`);
 
   const response = await fetch(url);
   const data = await response.json();
