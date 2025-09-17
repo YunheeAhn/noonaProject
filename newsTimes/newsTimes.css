@@ -52,9 +52,9 @@
   transform-origin: left;
   transition: transform 0.6s ease;
   overflow: hidden;
-  max-width: 260px;
 }
 .input_wrap.show {
+  max-width: 260px;
   transform: scaleX(1);
 }
 .input_wrap > input::placeholder {
