@@ -243,16 +243,18 @@ input::placeholder {
   color: #999;
 }
 .gotoTop {
-  position: absolute;
+  position: fixed;
   bottom: 30px;
   right: 30px;
   width: 60px;
   height: 60px;
   border-radius: 100%;
   background: var(--main);
-  overflow: hidden;
   border: 2px solid transparent;
-  transition: all 0.4s linear;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  /* transition: opacity 0.3s ease, visibility 0.3s ease; */
 }
 .gotoTop a {
   display: flex;
@@ -276,6 +278,11 @@ input::placeholder {
   color: var(--main);
 }
 
+.gotoTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 /*******************************************************************************
     @media  ~980px               
 *******************************************************************************/
@@ -283,6 +290,19 @@ input::placeholder {
   html,
   body {
     font-size: 16px;
+  }
+
+  .gotoTop {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+  }
+  .gotoTop a {
+  }
+  .gotoTop a span {
+    font-size: 30px;
   }
 }
 
@@ -380,5 +400,18 @@ input::placeholder {
     -ms-text-size-adjust: none; /* IE */
     -moz-text-size-adjust: none; /* 파이어폭스 */
     -o-text-size-adjust: none; /* 오페라(구)*/
+  }
+
+  .gotoTop {
+    bottom: 16px;
+    right: 16px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid transparent;
+  }
+  .gotoTop a {
+  }
+  .gotoTop a span {
+    font-size: 20px;
   }
 }

@@ -144,4 +144,26 @@ searchIcon.addEventListener("click", () => {
   inputWrap.classList.toggle("show");
 });
 
+// gotoTop 버튼 이벤트
+const gotoTop = document.querySelector(".gotoTop");
+const topBtn = document.querySelector(".gotoTop .top");
+// 스크롤 이벤트로 버튼 보이기/숨기기
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    // 스크롤이 200px 넘으면 보이기
+    gotoTop.classList.add("show");
+  } else {
+    gotoTop.classList.remove("show");
+  }
+});
+
+// 버튼 클릭 시 위로 스무스하게 이동
+topBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
 getLatestNews();
