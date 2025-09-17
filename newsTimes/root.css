@@ -3,13 +3,18 @@
   /**** !! 코딩시 지우지 말 것 !! ****/
 
   /* 컬러 */
-  --main: #9900ff;
-  --black: #222222;
-  --white: #fff;
   --basic: #444;
+  --LightFont: #777;
+
+  --black: #222;
+
+  --main: #043673;
+  --sub: #e4dcd3;
+
+  --white: #fff;
   --border: #dddddd;
   --border2: #bbbbbb;
-  --grayBg: #f3f4f9;
+  --grayBg: #f5f5f5;
 
   --sub: #6c259bff;
   --light: #daa3ffff;
@@ -17,8 +22,8 @@
   --pink: #ff5650;
 
   /* 폰트 */
-  --kor: "Noto Sans", "Poppins", Malgun Gothic, "Malgun Gothic", sans-serif;
-  --eng: "Poppins", "Noto Sans", Malgun Gothic, "Malgun Gothic", sans-serif;
+  --kor: "Pretendard Variable", "Roboto", Malgun Gothic, "Malgun Gothic", sans-serif;
+  --eng: "Roboto", "Pretendard Variable", Malgun Gothic, "Malgun Gothic", sans-serif;
   --icon: "Material Symbols Outlined";
   --icon2: "Material Icons";
 
