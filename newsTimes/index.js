@@ -38,12 +38,11 @@ const getLatestNews = async () => {
   console.log("뉴스생성", newsList);
 };
 
-// <img src="${news.urlToImage || defaultImage}" alt="${news.title}"/>
 const render = () => {
   const newsHTML = newsList
     .map((news) => {
       return `<div class="box">
-        <a href="" target="_blank">
+        <a>
             <div class="img_cont">
                 <img src="${news.urlToImage || defaultImage}" alt="${news.title}"
      onerror="this.onerror=null; this.src='${defaultImage}';"/>
