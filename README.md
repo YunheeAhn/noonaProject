@@ -11,13 +11,13 @@
 
 ## 🔗 배포 주소
 
-| 과제명             | 주소                                                             | 깃허브                                                                           |
-| ------------------ | ---------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| **메인화면**       | [메인바로가기](https://projectnoona.netlify.app/)                | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/blob/main/index.html) |
-| **숫자맞추기게임** | [숫자게임바로가기](https://projectnoona.netlify.app/numbergame/) | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/numberGame) |
-| **할일앱**         | [할일앱바로가기](https://projectnoona.netlify.app/todoapp/)      | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/todoApp)    |
-| **할일앱v2**       | [할일앱바로가기](https://projectnoona.netlify.app/todoapp_v2/)   | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/todoApp_v2) |
-| **뉴스타임즈**     | ⚙️준비중                                                         | ⚙️준비중                                                                         |
+| 과제명             | 주소                                                              | 깃허브                                                                           |
+| ------------------ | ----------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| **메인화면**       | [메인바로가기](https://projectnoona.netlify.app/)                 | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/blob/main/index.html) |
+| **숫자맞추기게임** | [숫자게임바로가기](https://projectnoona.netlify.app/numbergame/)  | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/numberGame) |
+| **할일앱**         | [할일앱바로가기](https://projectnoona.netlify.app/todoapp/)       | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/todoApp)    |
+| **할일앱v2**       | [할일앱v2바로가기](https://projectnoona.netlify.app/todoapp_v2/)  | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/todoApp_v2) |
+| **뉴스타임즈**     | [뉴스타임즈바로가기](https://projectnoona.netlify.app/newstimes/) | [저장소바로가기](https://github.com/YunheeAhn/noonaProject/tree/main/newsTimes)  |
 
 ## 📂 구성
 
@@ -53,3 +53,12 @@
 - 수정 내용 바로 반영
 - 마감일 기준 내림차순 정리<br>
 - 마감일에 따른 색상 UI 변화 <br>당일 혹은 지난 할일 : red <br>7일 이내 : orange <br>그 외 : green <br>
+
+### 🎯 뉴스타임즈
+
+- News API 서버 통신
+- `fetch`,`async`,`await` 로 기사 불러오기
+- category parameter 활용하여 카테고리별 기사 불러오기
+- 검색버튼 클릭시 검색버튼 도출
+- 검색 시 관련 내용 담고 있는 기사 노출
+- 반응형 구현 (980px 이하에서 모바일 메뉴 활성화)
