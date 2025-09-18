@@ -8,6 +8,21 @@ const newsAPI = "https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines
 // 뉴스 전역변수로 선언
 let newsList = [];
 
+// URL 전역변수로 선언
+let BASE_URL = new URL(`${newsAPI}&apiKey=${API_KEY}`);
+
+// url 호출
+const getUrl = async () => {
+  // url 호출하기
+  const response = await fetch(BASE_URL);
+  // json형식으로 data로 가져오기
+  const data = await response.json();
+  // 뉴스 따로 저장
+  newsList = data.articles;
+
+  render();
+};
+
 // 이미지가 없거나, 링크가 잘못 되었을 경우 대체 이미지
 const defaultImage =
   "https://img.freepik.com/premium-vector/green-start-button_875240-2897.jpg?w=1480";
@@ -19,21 +34,11 @@ menus.forEach((menu) => menu.addEventListener("click", (event) => getNewsCatagor
 
 // 뉴스 정보 가져오기
 const getLatestNews = async () => {
-  // URL 인스턴스를 활용해서 api 주소를 만들기
-
   // news api는 배포사이트에선 안보임, 로컬에서만 가능
   // 상단 변수 분리로 선택 용이하게 수정
-  const url = new URL(`${newsAPI}&apiKey=${API_KEY}`);
+  BASE_URL = new URL(`${newsAPI}&apiKey=${API_KEY}`);
 
-  // url 호출하기
-  const response = await fetch(url);
-  // json형식으로 data로 가져오기
-  const data = await response.json();
-
-  // 뉴스 따로 저장
-  newsList = data.articles;
-
-  render();
+  getUrl();
 
   console.log("뉴스생성", newsList);
 };
@@ -77,16 +82,10 @@ const getNewsCatagory = async (event) => {
   //  카테고리 읽어오기
   const category = event.target.textContent.toLowerCase();
 
-  // news api는 배포사이트에선 안보임, 로컬에서만 가능
   // 상단 변수 분리로 선택 용이하게 수정
-  const url = new URL(`${newsAPI}&category=${category}&apiKey=${API_KEY}`);
+  BASE_URL = new URL(`${newsAPI}&category=${category}&apiKey=${API_KEY}`);
 
-  const response = await fetch(url);
-  const data = await response.json();
-
-  // 그 뉴스 보여주기
-  newsList = data.articles;
-  render();
+  getUrl();
 };
 
 const searchInput = document.getElementById("searchInput");
@@ -105,18 +104,10 @@ const getNewsByKeyword = async () => {
   // search 인풋 값 가져오기
   const keyword = searchInput.value;
 
-  // api 호출하기
-
-  // news api는 배포사이트에선 안보임, 로컬에서만 가능
   // 상단 변수 분리로 선택 용이하게 수정
-  const url = new URL(`${newsAPI}&q=${keyword}&apiKey=${API_KEY}`);
+  BASE_URL = new URL(`${newsAPI}&q=${keyword}&apiKey=${API_KEY}`);
 
-  const response = await fetch(url);
-  const data = await response.json();
-
-  // 그 뉴스 보여주기
-  newsList = data.articles;
-  render();
+  getUrl();
 };
 
 // 모바일 메뉴
