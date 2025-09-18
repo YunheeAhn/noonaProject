@@ -11,8 +11,8 @@ let newsList = [];
 // URL 전역변수로 선언
 let BASE_URL = new URL(`${newsAPI}&apiKey=${API_KEY}`);
 
-// url 호출
-const getUrl = async () => {
+// 뉴스 데이터 호출
+const getNews = async () => {
   // url 호출하기
   const response = await fetch(BASE_URL);
   // json형식으로 data로 가져오기
@@ -38,7 +38,7 @@ const getLatestNews = async () => {
   // 상단 변수 분리로 선택 용이하게 수정
   BASE_URL = new URL(`${newsAPI}&apiKey=${API_KEY}`);
 
-  getUrl();
+  getNews();
 
   console.log("뉴스생성", newsList);
 };
@@ -85,7 +85,7 @@ const getNewsCatagory = async (event) => {
   // 상단 변수 분리로 선택 용이하게 수정
   BASE_URL = new URL(`${newsAPI}&category=${category}&apiKey=${API_KEY}`);
 
-  getUrl();
+  getNews();
 };
 
 const searchInput = document.getElementById("searchInput");
@@ -107,7 +107,7 @@ const getNewsByKeyword = async () => {
   // 상단 변수 분리로 선택 용이하게 수정
   BASE_URL = new URL(`${newsAPI}&q=${keyword}&apiKey=${API_KEY}`);
 
-  getUrl();
+  getNews();
 };
 
 // 모바일 메뉴
