@@ -13,14 +13,32 @@ let BASE_URL = new URL(`${newsAPI}&apiKey=${API_KEY}`);
 
 // 뉴스 데이터 호출
 const getNews = async () => {
-  // url 호출하기
-  const response = await fetch(BASE_URL);
-  // json형식으로 data로 가져오기
-  const data = await response.json();
-  // 뉴스 따로 저장
-  newsList = data.articles;
+  // 에러핸들링 추가 250919
+  try {
+    // url 호출하기
+    const response = await fetch(BASE_URL);
+    // json형식으로 data로 가져오기
+    const data = await response.json();
 
-  render();
+    // 200 ->api키 없을 때
+    if (response.status === 200) {
+      if (data.articles.length === 0) {
+        // 검색 결과가 없을 때 : edge case
+        throw new Error("No result for this search");
+      }
+      // Not Error
+      // 뉴스 따로 저장
+      newsList = data.articles;
+      render();
+    } else {
+      // Error situation
+      // 에러 메세지 던져주기
+      throw new Error(data.message);
+    }
+  } catch (error) {
+    // 에러메세지 유저 확인
+    errorRender(error.message);
+  }
 };
 
 // 이미지가 없거나, 링크가 잘못 되었을 경우 대체 이미지
@@ -43,6 +61,7 @@ const getLatestNews = async () => {
   console.log("뉴스생성", newsList);
 };
 
+//********** S : 뉴스 내용 render **********//
 const render = () => {
   const newsHTML = newsList
     .map((news) => {
@@ -76,7 +95,17 @@ const render = () => {
 
   document.getElementById("news-board").innerHTML = newsHTML;
 };
+//********** E : 뉴스 내용 render **********//
 
+//********** S : 에러 메세지 render **********//
+const errorRender = (errorMessage) => {
+  const errorHTML = `<div class="alert"><p>${errorMessage}</p></div>`;
+
+  document.getElementById("news-board").innerHTML = errorHTML;
+};
+//********** E : 에러 메세지 render **********//
+
+//********** S : 검색 핸들링 **********//
 // 카테고리별 뉴스 가져오기
 const getNewsCatagory = async (event) => {
   //  카테고리 읽어오기
@@ -88,7 +117,6 @@ const getNewsCatagory = async (event) => {
   getNews();
 };
 
-//********** S : 검색 핸들링 **********//
 const searchInput = document.getElementById("searchInput");
 // 인풋창 포커스시 입력 초기화
 function clearInput() {
