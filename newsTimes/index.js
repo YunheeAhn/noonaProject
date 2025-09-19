@@ -88,6 +88,7 @@ const getNewsCatagory = async (event) => {
   getNews();
 };
 
+//********** S : 검색 핸들링 **********//
 const searchInput = document.getElementById("searchInput");
 // 인풋창 포커스시 입력 초기화
 function clearInput() {
@@ -109,7 +110,9 @@ const getNewsByKeyword = async () => {
 
   getNews();
 };
+//********** E : 검색 핸들링 **********//
 
+//********** S : 모바일 UI **********//
 // 모바일 메뉴
 const menuBtn = document.querySelector(".mobile_menu > .btn"); // 열기 버튼
 const menuInner = document.querySelector(".mobile_menu > .inner"); // 메뉴 영역
@@ -156,4 +159,5 @@ topBtn.addEventListener("click", (event) => {
   });
 });
 
+//********** E : 모바일 UI **********//
 getLatestNews();
