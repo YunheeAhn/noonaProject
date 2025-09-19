@@ -12,7 +12,7 @@
   display: none;
 }
 
-.container {
+.containers {
   max-width: 1350px;
   min-width: 320px;
   width: 90%;
