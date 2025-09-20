@@ -45,8 +45,6 @@ const getNews = async () => {
       // 뉴스 따로 저장
       newsList = data.articles;
       totalResults = data.totalResults;
-      // 페이지 번호 1로 초기화
-      page = 1;
       render();
       paginationRender();
     } else {
@@ -69,8 +67,6 @@ menus.forEach((menu) => menu.addEventListener("click", (event) => getNewsCategor
 
 // 최신 뉴스 가져오기
 const getLatestNews = async () => {
-  // 페이지 번호 1로 초기화
-  page = 1;
   BASE_URL = new URL(`${newsAPI}&apiKey=${API_KEY}`);
   getNews();
 };
@@ -147,12 +143,12 @@ const paginationRender = () => {
   let paginationHTML = ``;
   // 첫번째 페이지인 경우 prev 버튼 안보임
   if (page > 1) {
-    paginationHTML = `<li class="page-item double-prev">
+    paginationHTML = `<li class="page-item arrow">
     <a href="#" class="page-link" onclick="moveToPage(1)">
     <span class="material-icons">keyboard_double_arrow_left</span>
     </a>
     </li>
-    <li class="page-item prev">
+    <li class="page-item arrow">
     <a href="#" class="page-link" onclick="moveToPage(${page - 1})">
     <span class="material-icons">keyboard_arrow_left</span>
     </a>
@@ -173,12 +169,12 @@ const paginationRender = () => {
   //********** S : 다음 버튼 **********//
   // 마지막 페이지인 경우 next 버튼 안보임
   if (page < totalPages) {
-    paginationHTML += `<li class="page-item next">
+    paginationHTML += `<li class="page-item arrow">
         <a href="#" class="page-link" onclick="moveToPage(${page + 1})">
           <span class="material-icons">keyboard_arrow_right</span>
         </a>
       </li>
-      <li class="page-item double-next">
+      <li class="page-item arrow">
         <a href="#" class="page-link" onclick="moveToPage(${totalPages})">
           <span class="material-icons">keyboard_double_arrow_right</span>
         </a>
@@ -230,8 +226,7 @@ searchInput.addEventListener("keydown", function (event) {
 const getNewsByKeyword = async () => {
   const keyword = searchInput.value;
   BASE_URL = new URL(`${newsAPI}&q=${keyword}&apiKey=${API_KEY}`);
-  // 페이지 번호 1로 초기화
-  page = 1;
+
   getNews();
 };
 //********** E : 검색 핸들링 **********//
