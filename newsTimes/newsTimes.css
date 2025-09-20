@@ -282,18 +282,31 @@
     width: 100%;
     background: var(--main);
   }
+  .mobile_menu .grayMask {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(34, 34, 34, 0.6);
+  }
   .mobile_menu .inner {
-    position: absolute;
+    position: fixed;
     max-width: 300px;
     width: 100%;
     height: 100%;
     top: 0;
+    bottom: 0;
     left: 0;
     background: var(--main);
     padding: 20px 0 0 0;
     transform: translateX(-100%);
     transition: all 0.3s ease;
     z-index: 9;
+  }
+  .mobile_menu .grayMask.show {
+    display: block;
   }
   .mobile_menu .inner.show {
     transform: translateX(0);

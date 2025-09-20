@@ -236,16 +236,24 @@ const getNewsByKeyword = async () => {
 // 모바일 메뉴
 const menuBtn = document.querySelector(".mobile_menu > .btn"); // 열기 버튼
 const menuInner = document.querySelector(".mobile_menu > .inner"); // 메뉴 영역
+const grayMask = document.querySelector(".mobile_menu > .grayMask"); // graymask 영역
 const closeBtn = document.querySelector(".mobile_menu .close_btn"); // 닫기 버튼
 
 // 열기
 menuBtn.addEventListener("click", () => {
   menuInner.classList.add("show");
+  grayMask.classList.add("show");
 });
 
 // 닫기
 closeBtn.addEventListener("click", () => {
   menuInner.classList.remove("show");
+  grayMask.classList.remove("show");
+});
+
+grayMask.addEventListener("click", () => {
+  menuInner.classList.remove("show");
+  grayMask.classList.remove("show");
 });
 
 // 검색 버튼 활성화
