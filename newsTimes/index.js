@@ -8,16 +8,30 @@ const API_KEY = "96079dbac224485cb7775442e96e2c56";
 // Noona api (배포용)
 const newsAPI = "https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr";
 
-// 뉴스 전역변수
-let newsList = [];
-
 // URL 전역변수
 let BASE_URL = new URL(`${newsAPI}&apiKey=${API_KEY}`);
 //********** E : API 설정 **********//
 
+//********** S : 뉴스 호출 관련 전역변수 **********//
+// 뉴스 전역변수
+let newsList = [];
+
+// total result 전역변수
+let totalResults = 0;
+
+// 페이지 정보
+let page = 1; // 페이지 기본 값
+const pageSize = 10; // 한 페이지에 보여질 기사의 수
+const groupSize = 5; // 한번에 보여질 페이지네이션의 수
+//********** E : 뉴스 호출 관련 전역변수 **********//
+
 //********** S : 뉴스 데이터 호출 **********//
 const getNews = async () => {
   try {
+    // url 호출하기
+    // 파라미터를 먼저 호출하고
+    BASE_URL.searchParams.set("page", page); // 페이지를 파라미터로 설정하기
+    BASE_URL.searchParams.set("pagesize", pageSize); // 페이지 사이즈 파라미터로 설정하기
     // url 호출하기
     const response = await fetch(BASE_URL);
     const data = await response.json();
@@ -30,7 +44,11 @@ const getNews = async () => {
 
       // 뉴스 따로 저장
       newsList = data.articles;
+      totalResults = data.totalResults;
+      // 페이지 번호 1로 초기화
+      page = 1;
       render();
+      paginationRender();
     } else {
       throw new Error(data.message); // 에러 상황
     }
@@ -51,9 +69,10 @@ menus.forEach((menu) => menu.addEventListener("click", (event) => getNewsCategor
 
 // 최신 뉴스 가져오기
 const getLatestNews = async () => {
+  // 페이지 번호 1로 초기화
+  page = 1;
   BASE_URL = new URL(`${newsAPI}&apiKey=${API_KEY}`);
   getNews();
-  console.log("뉴스생성", newsList);
 };
 //********** E : 기본 설정 **********//
 
@@ -101,11 +120,90 @@ const errorRender = (errorMessage) => {
 };
 //********** E : 에러 메세지 render **********//
 
+//********** S : 페이지네이션 **********//
+const paginationRender = () => {
+  const totalPages = Math.ceil(totalResults / pageSize);
+  const pageGroup = Math.ceil(page / groupSize);
+
+  // 현재 그룹의 마지막 페이지
+  let lastPage = pageGroup * groupSize;
+
+  // 마지막 페이지가 그룹 사이즈(5)보다 작으면 5까지 X
+  if (lastPage > totalPages) {
+    lastPage = totalPages;
+  }
+
+  // 현재 그룹의 첫 번째 페이지
+  let firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
+
+  // 전체 페이지가 5개 이하인 경우 3개만 보여주기
+  // if (totalPages <= 5) {
+  //   firstPage = Math.max(1, page - 1);
+  //   lastPage = Math.min(totalPages, firstPage + 2);
+  // }
+
+  //********** S : 이전 버튼 **********//
+  // 페이지 생성 변수 초기화
+  let paginationHTML = ``;
+  // 첫번째 페이지인 경우 prev 버튼 안보임
+  if (page > 1) {
+    paginationHTML = `<li class="page-item double-prev">
+    <a href="#" class="page-link" onclick="moveToPage(1)">
+    <span class="material-icons">keyboard_double_arrow_left</span>
+    </a>
+    </li>
+    <li class="page-item prev">
+    <a href="#" class="page-link" onclick="moveToPage(${page - 1})">
+    <span class="material-icons">keyboard_arrow_left</span>
+    </a>
+    </li>`;
+  }
+  //********** E : 이전 버튼 **********//
+
+  //********** S : 페이지 번호 **********//
+  for (let i = firstPage; i <= lastPage; i++) {
+    paginationHTML += `<li class="page-item ${i === page ? "active" : ""}">
+    <a href="#" class="page-link" onclick="moveToPage(${i})">
+    <span>${i}</span>
+    </a>
+    </li>`;
+  }
+  //********** E : 페이지 번호 **********//
+
+  //********** S : 다음 버튼 **********//
+  // 마지막 페이지인 경우 next 버튼 안보임
+  if (page < totalPages) {
+    paginationHTML += `<li class="page-item next">
+        <a href="#" class="page-link" onclick="moveToPage(${page + 1})">
+          <span class="material-icons">keyboard_arrow_right</span>
+        </a>
+      </li>
+      <li class="page-item double-next">
+        <a href="#" class="page-link" onclick="moveToPage(${totalPages})">
+          <span class="material-icons">keyboard_double_arrow_right</span>
+        </a>
+      </li>`;
+  }
+  //********** E : 다음 버튼 **********//
+
+  document.querySelector(".pagination").innerHTML = paginationHTML;
+};
+
+// a링크 페이지 이동하기
+const moveToPage = (pageNum) => {
+  page = pageNum;
+  getNews();
+};
+
+//********** E : 페이지네이션 **********//
+
 //********** S : 검색 핸들링 **********//
 // 카테고리별 뉴스 가져오기
 const getNewsCategory = async (event) => {
   const category = event.target.textContent.toLowerCase();
   BASE_URL = new URL(`${newsAPI}&category=${category}&apiKey=${API_KEY}`);
+  // 페이지 번호 1로 초기화
+  page = 1;
   getNews();
 };
 
@@ -118,7 +216,7 @@ function clearInput() {
 }
 
 // 인풋창 엔터 입력
-searchInput.addEventListener("keypress", function (event) {
+searchInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getNewsByKeyword();
   }
@@ -128,6 +226,8 @@ searchInput.addEventListener("keypress", function (event) {
 const getNewsByKeyword = async () => {
   const keyword = searchInput.value;
   BASE_URL = new URL(`${newsAPI}&q=${keyword}&apiKey=${API_KEY}`);
+  // 페이지 번호 1로 초기화
+  page = 1;
   getNews();
 };
 //********** E : 검색 핸들링 **********//
