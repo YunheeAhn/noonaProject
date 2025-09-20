@@ -205,6 +205,10 @@ const getNewsCategory = async (event) => {
   // 페이지 번호 1로 초기화
   page = 1;
   getNews();
+
+  // 카테고리 눌러서 뉴스 가져오면 모바일 메뉴 사라지기
+  menuInner.classList.remove("show");
+  grayMask.classList.remove("show");
 };
 
 // 검색창 요소
