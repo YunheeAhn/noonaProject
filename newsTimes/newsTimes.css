@@ -16,6 +16,7 @@
   max-width: 1350px;
   min-width: 320px;
   width: 90%;
+  height: 100vh;
   margin: 0 auto;
 }
 /* 검색기능 */
@@ -230,6 +231,89 @@
   border: 3px solid red;
 }
 
+/* 페이지네이션 */
+.page_num {
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+.page_num ul.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.page_num ul.pagination li {
+  margin: 0 10px;
+  text-align: center;
+  position: relative;
+}
+
+.page_num ul.pagination li a {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0;
+  transition: all 0.3s linear;
+  font-family: var(--eng);
+  text-align: center;
+  width: 20px;
+  height: 20px;
+}
+
+.page_num ul.pagination li a span {
+  transition: all 0.3s linear;
+  font-size: 16px;
+  line-height: 16px;
+  color: rgba(119, 119, 119, 0.5);
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.page_num ul.pagination li a:hover span {
+  color: var(--black);
+}
+.page_num ul.pagination li.active a span {
+  color: var(--main) !important;
+  font-weight: 700 !important;
+}
+.page_num ul.pagination li.active:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--main);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.page_num ul.pagination li.arrow a {
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  transition: all 0.3s linear;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 100%;
+}
+.page_num ul.pagination li.arrow a:hover {
+  border-color: var(--black);
+}
+.page_num ul.pagination li.arrow a span {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #bbb;
+  transition: all 0.3s linear;
+}
+.page_num ul.pagination li.arrow a:hover span {
+  color: var(--black);
+}
+
 /*******************************************************************************
     @media  ~980px               
 *******************************************************************************/
@@ -402,6 +486,32 @@
     width: 32px;
     height: 32px;
   }
+
+  /* 페이지네이션 */
+  .page_num {
+    padding: 30px 0;
+  }
+
+  .page_num ul.pagination li a {
+    width: 18px;
+    height: 18px;
+  }
+
+  .page_num ul.pagination li a span {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .page_num ul.pagination li.arrow a {
+    width: 22px;
+    height: 22px;
+  }
+  .page_num ul.pagination li.arrow a span {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+  }
 }
 
 /*******************************************************************************
@@ -466,5 +576,34 @@
     width: 26px;
     height: 26px;
     border: 2px solid red;
+  }
+
+  /* 페이지네이션 */
+  .page_num {
+    padding: 20px 0;
+  }
+  .page_num ul.pagination li {
+    margin: 0 6px;
+  }
+
+  .page_num ul.pagination li a {
+    width: 16px;
+    height: 16px;
+  }
+
+  .page_num ul.pagination li a span {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .page_num ul.pagination li.arrow a {
+    width: 20px;
+    height: 20px;
+  }
+  .page_num ul.pagination li.arrow a span {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
   }
 }
